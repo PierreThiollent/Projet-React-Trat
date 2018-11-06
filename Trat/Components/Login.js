@@ -1,33 +1,46 @@
 import React from 'react';
-import {StyleSheet, View, ImageBackground, Dimensions, TouchableOpacity, TextInput} from 'react-native';
+import {StyleSheet, View, ImageBackground, Dimensions, TouchableOpacity, TextInput, Text} from 'react-native';
+import { Button } from 'native-base';
 
 
 export default class Login extends React.Component {
     render() {
         return (
-            <ImageBackground source={require('../assets/Images/Login.png')} style={styles.container}>
-                <View style={styles.inputContainer} >
-                    <TextInput
-                        style={styles.input}
-                        placeholder='Identifiant :'
-                        selectionColor={'white'}
-                        placeholderTextColor={'white'}
-                    />
-                    <TextInput
-                        style={styles.input}
-                        placeholder='Mot de passe :'
-                        secureTextEntry={true}
-                        selectionColor={'white'}
-                        placeholderTextColor={'white'}
-                    />
-                    <TextInput
-                        style={styles.input}
-                        placeholder='Code Premium :'
-                        selectionColor={'white'}
-                        placeholderTextColor={'white'}
-                    />
-                </View>
-            </ImageBackground>
+                <ImageBackground source={require('../assets/Images/Login.png')} style={styles.container}>
+                    <View style={styles.inputContainer}>
+                        <TextInput
+                            keyboardType='email-address'
+                            disableFullscreenUI={false}
+                            style={styles.input}
+                            placeholder='Identifiant :'
+                            selectionColor='white'
+                            placeholderTextColor='white'
+                        />
+                        <TextInput
+                            style={styles.input}
+                            placeholder='Mot de passe :'
+                            secureTextEntry={true}
+                            selectionColor={'white'}
+                            placeholderTextColor={'white'}
+                        />
+                        <TextInput
+                            style={styles.input}
+                            clearTextOnFocus={true}
+                            placeholder='Code Premium :'
+                            selectionColor='white'
+                            placeholderTextColor='white'
+                        />
+                    </View>
+                    <Button
+                        style= {{ marginTop: 20 }}
+                        full
+                        rounded
+                        success
+                        onPress= {() => this.props.navigation.navigate('HomeScreen')}
+                    >
+                        <Text>Connexion</Text>
+                    </Button>
+                </ImageBackground>
         );
     }
 }
@@ -48,7 +61,6 @@ const styles = StyleSheet.create({
     },
     input: {
         borderRadius: 50,
-        backgroundColor: 'black',
         width: 290,
         height: 42,
         alignItems: 'center',
