@@ -1,10 +1,12 @@
-import {createStackNavigator} from 'react-navigation'
+import {createDrawerNavigator, createStackNavigator} from 'react-navigation'
 import Start from '../Components/Start'
 import Login from '../Components/Login'
 import Home from '../Components/Home'
+import SelectQuiz from "../Components/SelectQuiz";
+import DrawerMenu from "../Components/DrawerMenu";
 
 
-const Navigation = createStackNavigator(
+const AppStackNavigation = createStackNavigator(
     {
         StartScreen: {
             screen: Start,
@@ -16,11 +18,14 @@ const Navigation = createStackNavigator(
         HomeScreen: {
             screen: Home
         },
+        SelectQuiz: {
+            screen: SelectQuiz
+        },
     },
 
     {
-        initialRouteName: "StartScreen",
         navigationOptions: {
+            header: null,
             headerStyle: {
                 backgroundColor: 'black'
             }
@@ -28,4 +33,27 @@ const Navigation = createStackNavigator(
     }
 );
 
-export default Navigation
+const AppDrawerNavigator = createDrawerNavigator({
+        Home: {
+            screen: AppStackNavigation,
+        },
+        LoginScreen: {
+            screen: Login,
+        },
+        HomeScreen: {
+            screen: Home
+        },
+        SelectQuiz: {
+            screen: SelectQuiz
+        },
+    },
+    {
+        initialRouteName: 'SelectQuiz',
+        drawerPosition: 'right',
+        drawerBackgroundColor: 'transparent',
+        contentComponent: DrawerMenu,
+        // styling for for DrawerView.Items in contentOptions
+
+    });
+
+export default AppDrawerNavigator
