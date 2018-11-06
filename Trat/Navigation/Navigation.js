@@ -52,7 +52,6 @@ const AppDrawerNavigator = createDrawerNavigator({
         drawerPosition: 'right',
         drawerBackgroundColor: 'transparent',
         contentComponent: DrawerMenu,
-        // styling for for DrawerView.Items in contentOptions
 
     });
 

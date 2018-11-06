@@ -1,35 +1,33 @@
 import React from 'react';
-import {StyleSheet, Text, View, ImageBackground, Dimensions, TouchableOpacity} from 'react-native';
+import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 export default class Home extends React.Component {
     render() {
         return (
             <ImageBackground source={require('../assets/Images/Home.png')} style={styles.container}>
-                <View>
+                <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                     <Text style={styles.description}>
                         Trat est un quiz détiné à occuper votre temps libre dans les transports en commun avec des
-                        questions variées.
-
-                        En partenariat avec le réseau astuce il vous offrira la possibilité de remporter des réductions
+                        questions variées. En partenariat avec le réseau astuce il vous offrira la possibilité de
+                        remporter
+                        des réductions
                     </Text>
                 </View>
-                <View>
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.buttonText}>QUIZ</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.buttonText}>PROFIL</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.buttonText}>STATISTIQUES</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.buttonText}>Boutique</Text>
-                        </TouchableOpacity>
-                    </View>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={[styles.button, {alignItems: 'flex-end', marginRight: 35}]}>
+                        <Text style={[styles.buttonText, {marginRight: 15}]}>QUIZ</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={[styles.button, {alignItems: 'flex-start'}]}>
+                        <Text style={[styles.buttonText, {marginLeft: 15}]}>PROFIL</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={[styles.button, {alignItems: 'flex-end', marginRight: 35}]}>
+                        <Text style={[styles.buttonText, {marginRight: 15}]}>STATISTIQUES</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={[styles.button, {alignItems: 'flex-start'}]}>
+                        <Text style={[styles.buttonText, {marginLeft: 15}]}>BOUTIQUE</Text>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         );
@@ -41,29 +39,31 @@ const styles = StyleSheet.create({
         flex: 1,
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
-        justifyContent: 'flex-end',
         alignItems: 'center',
+
     },
     description: {
         color: 'white',
-        alignItems:'center'
+        textAlign: 'center',
+        fontWeight: '700'
     },
     buttonContainer: {
         flexDirection: 'row',
     },
     button: {
         borderRadius: 50,
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
         width: 251,
         height: 50,
         justifyContent: 'center',
-        alignItems: 'center',
-        borderColor: 'black',
+        alignItems: 'flex-end',
         marginBottom: 100,
+        borderColor: '#FC6B32',
+        borderWidth: 1,
     },
     buttonText: {
         color: 'white',
         fontSize: 17,
+
 
     }
 });

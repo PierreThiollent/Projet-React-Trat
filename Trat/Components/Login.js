@@ -1,12 +1,13 @@
 import React from 'react';
-import {StyleSheet, View, ImageBackground, Dimensions, TouchableOpacity, TextInput, Text} from 'react-native';
-import { Button } from 'native-base';
+import {Dimensions, ImageBackground, StyleSheet, Text, TextInput, View} from 'react-native';
+import {Button} from 'native-base';
 
 
 export default class Login extends React.Component {
     render() {
         return (
-                <ImageBackground source={require('../assets/Images/Login.png')} style={styles.container}>
+            <View style={styles.container}>
+                <ImageBackground source={require('../assets/Images/Login.png')} style={styles.backgroundImage}>
                     <View style={styles.inputContainer}>
                         <TextInput
                             keyboardType='email-address'
@@ -32,15 +33,16 @@ export default class Login extends React.Component {
                         />
                     </View>
                     <Button
-                        style= {{ marginTop: 20 }}
+                        style={{marginTop: 20}}
                         full
                         rounded
                         success
-                        onPress= {() => this.props.navigation.navigate('HomeScreen')}
+                        onPress={() => this.props.navigation.navigate('HomeScreen')}
                     >
                         <Text>Connexion</Text>
                     </Button>
                 </ImageBackground>
+            </View>
         );
     }
 }
@@ -48,16 +50,22 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: 'black',
+
+    },
+    backgroundImage: {
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        height: 90 + '%',
         justifyContent: 'flex-end',
         alignItems: 'center',
-
+        zIndex: 100,
+        position: 'absolute'
     },
     inputContainer: {
         height: 160,
         justifyContent: 'space-between',
         marginBottom: 40,
+        zIndex: -1
     },
     input: {
         borderRadius: 50,
