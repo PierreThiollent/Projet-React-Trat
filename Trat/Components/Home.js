@@ -5,10 +5,13 @@ export default class Home extends React.Component {
     render() {
         return (
             <ImageBackground source={require('../assets/Images/Home.png')} style={styles.container}>
-                <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', width: 90 + '%'}}>
                     <Text style={styles.description}>
                         Trat est un quiz détiné à occuper votre temps libre dans les transports en commun avec des
-                        questions variées. En partenariat avec le réseau astuce il vous offrira la possibilité de
+                        questions variées.
+                    </Text>
+                    <Text style={styles.description}>
+                        En partenariat avec le réseau astuce il vous offrira la possibilité de
                         remporter
                         des réductions
                     </Text>
@@ -22,7 +25,7 @@ export default class Home extends React.Component {
                         <Text style={[styles.buttonText, {marginLeft: 15}]}>PROFIL</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.buttonContainer}>
+                <View style={[styles.buttonContainer, {marginBottom: 120}]}>
                     <TouchableOpacity style={[styles.button, {alignItems: 'flex-end', marginRight: 35}]}>
                         <Text style={[styles.buttonText, {marginRight: 15}]}>STATISTIQUES</Text>
                     </TouchableOpacity>
@@ -46,10 +49,13 @@ const styles = StyleSheet.create({
     description: {
         color: 'white',
         textAlign: 'center',
-        fontWeight: '700'
+        fontWeight: '700',
+        marginTop: 80,
+        fontSize: 17
     },
     buttonContainer: {
         flexDirection: 'row',
+        marginBottom: 50
     },
     button: {
         borderRadius: 50,
@@ -57,7 +63,6 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: 'center',
         alignItems: 'flex-end',
-        marginBottom: 100,
         borderColor: '#FC6B32',
         borderWidth: 1,
     },

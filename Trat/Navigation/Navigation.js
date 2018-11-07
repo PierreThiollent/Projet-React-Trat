@@ -24,7 +24,7 @@ const AppStackNavigation = createStackNavigator(
     },
 
     {
-        initialRouteName: 'SelectQuiz',
+        initialRouteName: 'HomeScreen',
         navigationOptions: {
             header: null,
             headerStyle: {
