@@ -24,6 +24,7 @@ const AppStackNavigation = createStackNavigator(
     },
 
     {
+        initialRouteName: 'SelectQuiz',
         navigationOptions: {
             header: null,
             headerStyle: {
@@ -48,7 +49,6 @@ const AppDrawerNavigator = createDrawerNavigator({
         },
     },
     {
-        initialRouteName: 'SelectQuiz',
         drawerPosition: 'right',
         drawerBackgroundColor: 'transparent',
         contentComponent: DrawerMenu,

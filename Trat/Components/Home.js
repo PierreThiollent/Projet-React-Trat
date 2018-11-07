@@ -14,7 +14,8 @@ export default class Home extends React.Component {
                     </Text>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={[styles.button, {alignItems: 'flex-end', marginRight: 35}]}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SelectQuiz')}
+                                      style={[styles.button, {alignItems: 'flex-end', marginRight: 35}]}>
                         <Text style={[styles.buttonText, {marginRight: 15}]}>QUIZ</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={[styles.button, {alignItems: 'flex-start'}]}>

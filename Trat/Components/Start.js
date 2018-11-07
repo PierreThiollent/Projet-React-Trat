@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import * as firebase from 'firebase';
 
 // Initialize Firebase
@@ -12,35 +12,52 @@ export var config = {
     messagingSenderId: "529381865694"
 };
 firebase.initializeApp(config);
-
 firebase.auth().signInAnonymously().catch(function (error) {
-    // Handle Errors here.
     const errorCode = error.code;
     const errorMessage = error.message;
-    // ...
 });
 
 export default class Start extends React.Component {
 
     signInAnonymous = () => {
         firebase.auth().onAuthStateChanged(function (user) {
+
             if (user) {
                 // User is signed in.
                 const isAnonymous = user.isAnonymous;
-                const uid = user.uid;
+                let uid = user.uid;
                 console.log("L'UID est : " + uid);
                 console.log(user);
-                this.props.navigation.navigate('HomeScreen')
             }
             else {
-                console.log(errorMessage);
+                console.log(error.Message);
             }
+
         });
+
     };
+
+    constructor(props) {
+        super(props);
+
+        this.state = ({
+            newToken: false,
+        })
+    }
+
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user != null && this.state.newToken === true) {
+                this.props.navigation.navigate('HomeScreen');
+                console.log(user);
+            }
+        })
+    }
 
     render() {
         return (
             <ImageBackground source={require('../assets/Images/Start.png')} style={styles.container}>
+               <View style={styles.buttonContainer}>
                 <TouchableOpacity
                     onPress={() => {
                         this.props.navigation.navigate('HomeScreen')
@@ -49,10 +66,13 @@ export default class Start extends React.Component {
                     <Text style={styles.buttonText}>Accès Etudiant</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => this.signInAnonymous()}
+                    onPress={() => {this.signInAnonymous();
+                        this.setState({newToken: true})
+                    }}
                     style={styles.button}>
                     <Text style={styles.buttonText}>Accès à l'application</Text>
                 </TouchableOpacity>
+               </View>
             </ImageBackground>
         );
     }
@@ -63,23 +83,25 @@ const styles = StyleSheet.create({
         flex: 1,
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
         alignItems: 'center',
+    },
+    buttonContainer: {
+      marginTop: 150,
     },
     button: {
         borderRadius: 50,
         backgroundColor: 'rgba(0, 0, 0, 0.3)',
         width: 282,
-        height: 42,
+        height: 50,
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: 'black',
-        marginBottom: 100,
+        marginTop: 50,
     },
     buttonText: {
         color: 'white',
         fontSize: 22,
-
     }
 
 });
