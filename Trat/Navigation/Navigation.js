@@ -4,6 +4,8 @@ import Login from '../Components/Login'
 import Home from '../Components/Home'
 import SelectQuiz from "../Components/SelectQuiz";
 import DrawerMenu from "../Components/DrawerMenu";
+import Profile from "../Components/Profile";
+
 
 
 const AppStackNavigation = createStackNavigator(
@@ -21,10 +23,13 @@ const AppStackNavigation = createStackNavigator(
         SelectQuiz: {
             screen: SelectQuiz
         },
+        ProfileScreen: {
+            screen: Profile
+        },
     },
 
     {
-        initialRouteName: 'HomeScreen',
+        initialRouteName: 'ProfileScreen',
         navigationOptions: {
             header: null,
             headerStyle: {
