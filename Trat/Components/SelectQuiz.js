@@ -17,7 +17,7 @@ export default class SelectQuiz extends React.Component {
                 <View style={styles.icon}>
                     <View style={styles.topa}>
                         <TouchableOpacity onPress={() => {
-                            this.props.navigation.navigate("")
+                            this.props.navigation.navigate("SelectThemePremium")
                         }}>
                             <Image source={require('../assets/Images/Premium.png')}/>
                         </TouchableOpacity>
@@ -58,7 +58,7 @@ export default class SelectQuiz extends React.Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.go}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SelectThemePremium')}>
                         <Image source={require('../assets/Images/Go.png')}/>
                     </TouchableOpacity>
                 </View>

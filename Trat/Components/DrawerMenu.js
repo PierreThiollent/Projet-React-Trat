@@ -49,10 +49,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 40,
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+        alignItems: 'center'
     },
     uglyDrawerItem: {
-        marginRight: 50,
+        marginRight: 60,
         fontSize: 35,
         color: '#fff',
         padding: 10,
