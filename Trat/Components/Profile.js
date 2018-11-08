@@ -6,16 +6,17 @@ export default class Profile extends React.Component {
     render() {
         return (
             <ImageBackground source={require('../assets/Images/Profile.png')} style={styles.container}>
+                <View style={styles.burger}>
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.openDrawer()}
+                        title="Go back home"
+                    >
+                        <Image source={require('../assets/Images/DrawerIco.png')}/>
+                    </TouchableOpacity>
+                </View>
                 <View style={styles.header}>
                         <Text style={styles.title}>PROFIL</Text>
-                    <View style={styles.burger}>
-                        <TouchableOpacity
-                            onPress={() => this.props.navigation.openDrawer()}
-                            title="Go back home"
-                        >
-                            <Image source={require('../assets/Images/DrawerIco.png')}/>
-                        </TouchableOpacity>
-                    </View>
+
                 </View>
                 <View style={styles.userInfos}>
                     <Text style={styles.title}>Martin HERICHE</Text>
@@ -73,8 +74,10 @@ const styles = StyleSheet.create({
         fontSize: 30
     },
     burger: {
+        position: 'absolute',
+        top: '5%',
+        right: '5%',
         zIndex: 10,
-        marginRight: 15
     },
     userInfos: {
         width:100+'%',

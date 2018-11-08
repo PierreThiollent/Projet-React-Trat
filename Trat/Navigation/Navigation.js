@@ -6,6 +6,8 @@ import SelectQuiz from "../Components/SelectQuiz";
 import DrawerMenu from "../Components/DrawerMenu";
 import SelectThemePremium from "../Components/SelectThemePremium";
 import PremiumQuizVue from "../Components/PremiumQuizVue";
+import Stats from "../Components/Stats";
+import Profile from "../Components/Profile";
 
 
 const AppStackNavigation = createStackNavigator(
@@ -23,11 +25,18 @@ const AppStackNavigation = createStackNavigator(
         SelectQuiz: {
             screen: SelectQuiz
         },
+
         SelectThemePremium: {
             screen: SelectThemePremium
         },
         PremiumQuizVue: {
             screen: PremiumQuizVue
+        },
+        StatsScreen: {
+            screen: Stats
+        },
+        ProfileScreen: {
+            screen: Profile
         }
 
     },

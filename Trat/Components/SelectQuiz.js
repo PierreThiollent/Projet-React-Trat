@@ -2,7 +2,16 @@ import React from 'react';
 import {Image, ImageBackground, Text, TouchableOpacity, View, StyleSheet, Dimensions} from 'react-native';
 
 export default class SelectQuiz extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = ({
+            type: "",
+            time: 0
+        })
+    }
+
     render() {
+        console.log(this.state.type, this.state.time);
         return (
             <ImageBackground source={require('../assets/Images/SelecQuiz.png')} style={styles.container}>
                 <View
@@ -16,30 +25,33 @@ export default class SelectQuiz extends React.Component {
                 </View>
                 <View style={styles.icon}>
                     <View style={styles.topa}>
-                        <TouchableOpacity onPress={() => {
-                            this.props.navigation.navigate("SelectThemePremium")
+                        <TouchableOpacity onPress={() => {this.setState({
+                            type: "premium"
+                        });
                         }}>
-                            <Image source={require('../assets/Images/Premium.png')}/>
+                            <Image source={(this.state.type === "premium") ? require('../assets/Images/validP.png') : require('../assets/Images/Premium.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.txt}>
                             Premium
                         </Text>
                     </View>
                     <View style={styles.topa}>
-                        <TouchableOpacity onPress={() => {
-                            this.props.navigation.navigate("")
+                        <TouchableOpacity onPress={() => {this.setState({
+                            type: "geoloc"
+                        });
                         }}>
-                            <Image source={require('../assets/Images/Geoloc.png')}/>
+                            <Image source={(this.state.type === "geoloc") ? require('../assets/Images/validG.png') : require('../assets/Images/Geoloc.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.txt}>
                             Géolocalisé
                         </Text>
                     </View>
                     <View style={styles.topa}>
-                        <TouchableOpacity onPress={() => {
-                            this.props.navigation.navigate("")
+                        <TouchableOpacity onPress={() => {this.setState({
+                            type: "simple"
+                        });
                         }}>
-                            <Image source={require('../assets/Images/Simple.png')}/>
+                            <Image source={(this.state.type === "simple") ? require('../assets/Images/validS.png') : require('../assets/Images/Simple.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.txt}>
                             Simple
@@ -47,13 +59,28 @@ export default class SelectQuiz extends React.Component {
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity onPress={() => {
+                        this.setState({
+                            time: 5,
+                        });
+                    }}
+                                      style={[styles.button, {backgroundColor: (this.state.time === 5) ? "#rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0.3)"}]}>
                         <Text style={styles.buttonText}>5 minutes</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity onPress={() => {
+                        this.setState({
+                            time: 10,
+                        });
+                    }}
+                                      style={[styles.button, {backgroundColor: (this.state.time === 10) ? "#rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0.3)"}]}>
                         <Text style={styles.buttonText}>10 minutes</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity onPress={() => {
+                        this.setState({
+                            time: 15,
+                        });
+                    }}
+                    style={[styles.button, {backgroundColor: (this.state.time === 15) ? "#rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0.3)"}]}>
                         <Text style={styles.buttonText}>15 minutes</Text>
                     </TouchableOpacity>
                 </View>

@@ -5,16 +5,17 @@ export default class Stats extends React.Component {
     render() {
         return (
             <ImageBackground source={require('../assets/Images/Stats.png')} style={styles.container}>
+                <View style={styles.burger}>
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.openDrawer()}
+                        title="Go back home"
+                    >
+                        <Image source={require('../assets/Images/DrawerIco.png')}/>
+                    </TouchableOpacity>
+                </View>
                 <View style={styles.header}>
                     <Text style={styles.title}>STATISTIQUES</Text>
-                    <View style={styles.burger}>
-                        <TouchableOpacity
-                            onPress={() => this.props.navigation.openDrawer()}
-                            title="Go back home"
-                        >
-                            <Image source={require('../assets/Images/DrawerIco.png')}/>
-                        </TouchableOpacity>
-                    </View>
+
                 </View>
                 <View style={styles.userInfos}>
                     <Text style={styles.userTitle}>Martin HERICHE</Text>
@@ -70,8 +71,10 @@ const styles = StyleSheet.create({
         fontSize: 40
     },
     burger: {
+        position: 'absolute',
+        top: '5%',
+        right: '5%',
         zIndex: 10,
-        marginRight: 15
     },
     userInfos: {
         width: 100 + '%',
