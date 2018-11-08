@@ -10,15 +10,14 @@ import {
     Text,
     Dimensions
 } from 'react-native'
-import {jsonTestData} from "../Data/TestQuizzData";
-import Display from 'react-native-display';
+import {jsonCGData} from "../Data/CGQuizDataFacile1";
 
 export default class PremiumQuizVue extends React.Component {
 
     _Next = () => {
         this._scoring();
-        if (this.state.count === 9) {
-            this.setState({visible: false})
+        if (this.state.count === 10) {
+            this.setState({enable: true})
         }
         else {
             this.setState({
@@ -68,12 +67,12 @@ export default class PremiumQuizVue extends React.Component {
                 <View style={styles.head_container}>
                     <Image source={require('../assets/Images/QTP.png')}/>
                 </View>
-                <View style={styles.pic}>{jsonTestData.questions[this.state.count].images}</View>
+                <View style={styles.pic}>{jsonCGData.questions[this.state.count].images}</View>
                 <View style={styles.quiz}>
-                    <Text style={styles.questions}>{jsonTestData.questions[this.state.count].title}</Text>
+                    <Text style={styles.questions}>{jsonCGData.questions[this.state.count].title}</Text>
                     <View style={styles.q_container}>
                         {
-                            jsonTestData.questions[this.state.count].answer.map((el) => {
+                            jsonCGData.questions[this.state.count].answer.map((el) => {
                                 return (<TouchableHighlight disabled={this.state.disable}
                                                             style={[styles.answerButton, {backgroundColor: (el.res === true && this.state.response === true) ? "#006400" : "white"}]}
                                                             onPress={() => {
@@ -81,7 +80,6 @@ export default class PremiumQuizVue extends React.Component {
                                                                     qn: el.res,
                                                                     response: true,
                                                                     disable: true,
-                                                                    enable: true,
                                                                     visible: true,
                                                                 });
                                                             }}
@@ -112,6 +110,29 @@ export default class PremiumQuizVue extends React.Component {
                                 }}>
                             </TouchableOpacity>
                 </Modal>
+                <Modal animationType="slide"
+                       transparent={true}
+                       visible={this.state.enable}
+                       onRequestClose={() => {
+                           this.props.navigation.navigate("HomeScreen");
+                       }}>
+                    <ImageBackground style={styles.result}>
+                        <Text style={{color: '#fff'}}>
+                            Le Quiz est terminé
+                        </Text>
+
+                        <View style={styles.buttonContainer}>
+                            <TouchableOpacity
+                                style={styles.button}
+                                onPress={() => {
+                                    this.props.navigation.navigate("HomeScreen");
+                                    this.setState({enable: false})
+                                }}>
+                                <Text style={{textAlign: 'center',}}>{"Score: " + this.state.score + " /  11"}</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </ImageBackground>
+                </Modal>
            </ImageBackground>
         )
     }
@@ -128,7 +149,9 @@ const styles = StyleSheet.create({
     },
     pic: {
       flex: 3,
-      justifyContent: 'flex-start'
+      flexDirection: 'row',
+      justifyContent: 'flex-end'
+
     },
     quiz: {
         justifyContent: 'space-between',
@@ -172,6 +195,30 @@ const styles = StyleSheet.create({
         flex: 1,
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
+    },
+    result: {
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    buttonContainer: {
+        flex: 2,
+        marginTop: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    button: {
+        borderRadius: 50,
+        width: 251,
+        height: 50,
+        justifyContent: 'center',
+        borderColor: '#FC6B32',
+        backgroundColor: '#fff',
+        borderWidth: 1,
+        alignContent: 'center',
     },
 
 });
