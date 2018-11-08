@@ -7,9 +7,7 @@ export default class Profile extends React.Component {
         return (
             <ImageBackground source={require('../assets/Images/Profile.png')} style={styles.container}>
                 <View style={styles.header}>
-                    <View style={styles.titleContainer}>
                         <Text style={styles.title}>PROFIL</Text>
-                    </View>
                     <View style={styles.burger}>
                         <TouchableOpacity
                             onPress={() => this.props.navigation.openDrawer()}
@@ -21,11 +19,12 @@ export default class Profile extends React.Component {
                 </View>
                 <View style={styles.userInfos}>
                     <Text style={styles.title}>Martin HERICHE</Text>
-                    <Text style={{fontSize:17, color:'white'}}>Etudiant en Web Design</Text>
+                    <Text style={{fontSize:17, color:'white', marginLeft: 15}}>Etudiant en Web Design</Text>
                 </View>
                 <View style={styles.avatar}>
                     <Avatar
-                        xlarge
+                        width={200}
+                        height={200}
                         rounded
                         source={require('../assets/Images/profileImage.jpg')}
                     />
@@ -68,10 +67,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginTop: 10
     },
-    titleContainer: {
-        marginLeft: 15
-    },
     title: {
+        marginLeft: 15,
         color: 'white',
         fontSize: 30
     },
@@ -80,12 +77,12 @@ const styles = StyleSheet.create({
         marginRight: 15
     },
     userInfos: {
-        marginLeft: 15
+        width:100+'%',
     },
     avatar:{
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 80
+        marginTop: 60
     },
     avatarText: {
         color:'white',
@@ -96,7 +93,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginLeft: 25,
         justifyContent:'space-between',
-        marginTop: 150
+        marginTop: 120
     },
     gamesText: {
         color:'#9F9F9F',
