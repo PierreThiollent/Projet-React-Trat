@@ -1,14 +1,14 @@
 import React from 'react'
 import {
+    Dimensions,
     Image,
     ImageBackground,
-    StyleSheet,
     Modal,
+    StyleSheet,
+    Text,
     TouchableHighlight,
     TouchableOpacity,
-    View,
-    Text,
-    Dimensions
+    View
 } from 'react-native'
 import {jsonCGData} from "../Data/CGQuizDataFacile1";
 
@@ -46,7 +46,6 @@ export default class PremiumQuizVue extends React.Component {
 
         }
     };
-
 
     constructor(props) {
         super(props);
@@ -103,12 +102,12 @@ export default class PremiumQuizVue extends React.Component {
                 >
 
 
-                            <TouchableOpacity style={styles.modal}
-                                onPress={() => {
-                                    this._Next();
-                                    this.setState({visible: false})
-                                }}>
-                            </TouchableOpacity>
+                    <TouchableOpacity style={styles.modal}
+                                      onPress={() => {
+                                          this._Next();
+                                          this.setState({visible: false})
+                                      }}>
+                    </TouchableOpacity>
                 </Modal>
                 <Modal animationType="slide"
                        transparent={true}
@@ -133,7 +132,7 @@ export default class PremiumQuizVue extends React.Component {
                         </View>
                     </ImageBackground>
                 </Modal>
-           </ImageBackground>
+            </ImageBackground>
         )
     }
 };
@@ -148,9 +147,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     pic: {
-      flex: 3,
-      flexDirection: 'row',
-      justifyContent: 'flex-end'
+        flex: 3,
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
 
     },
     quiz: {

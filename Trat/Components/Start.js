@@ -1,6 +1,7 @@
 import React from 'react';
 import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import * as firebase from 'firebase';
+import LottieView from 'lottie-react-native';
 
 // Initialize Firebase
 export var config = {
@@ -38,8 +39,7 @@ export default class Start extends React.Component {
     };
 
     constructor(props) {
-        super(props);
-
+        super(props)
         this.state = ({
             newToken: false,
         })
@@ -57,22 +57,29 @@ export default class Start extends React.Component {
     render() {
         return (
             <ImageBackground source={require('../assets/Images/Start.png')} style={styles.container}>
-               <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                    onPress={() => {
-                        this.props.navigation.navigate('HomeScreen')
-                    }}
-                    style={styles.button}>
-                    <Text style={styles.buttonText}>Accès Etudiant</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={() => {this.signInAnonymous();
-                        this.setState({newToken: true})
-                    }}
-                    style={styles.button}>
-                    <Text style={styles.buttonText}>Accès à l'application</Text>
-                </TouchableOpacity>
-               </View>
+                <LottieView
+                    autoPlay
+                    loop={false}
+                    style={{width: 100+'%', height: 300, marginTop: 20}}
+                    source={require('../Animations/logo.json')}
+                />
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity
+                        onPress={() => {
+                            this.props.navigation.navigate('HomeScreen')
+                        }}
+                        style={styles.button}>
+                        <Text style={styles.buttonText}>Accès Etudiant</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => {
+                            this.signInAnonymous();
+                            this.setState({newToken: true})
+                        }}
+                        style={styles.button}>
+                        <Text style={styles.buttonText}>Accès à l'application</Text>
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
         );
     }
@@ -87,7 +94,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonContainer: {
-      marginTop: 150,
+        flex:1,
+        marginTop: 80
     },
     button: {
         borderRadius: 50,

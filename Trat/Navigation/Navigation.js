@@ -4,6 +4,8 @@ import Login from '../Components/Login'
 import Home from '../Components/Home'
 import SelectQuiz from "../Components/SelectQuiz";
 import DrawerMenu from "../Components/DrawerMenu";
+import Profile from "../Components/Profile";
+import Stats from "../Components/Stats";
 import SelectThemePremium from "../Components/SelectThemePremium";
 import PremiumQuizVue from "../Components/PremiumQuizVue";
 import Stats from "../Components/Stats";
@@ -37,7 +39,11 @@ const AppStackNavigation = createStackNavigator(
         },
         ProfileScreen: {
             screen: Profile
+<<<<<<< Updated upstream
         }
+=======
+        },
+>>>>>>> Stashed changes
 
     },
 

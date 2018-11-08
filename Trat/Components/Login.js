@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingLeft: 15,
         justifyContent: 'space-around',
-        borderColor: '#FFFFFF',
         borderWidth: 1,
     },
 });
