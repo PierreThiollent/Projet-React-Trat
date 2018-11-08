@@ -21,15 +21,18 @@ export default class Home extends React.Component {
                                       style={[styles.button, {alignItems: 'flex-end', marginRight: 35}]}>
                         <Text style={[styles.buttonText, {marginRight: 15}]}>QUIZ</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.button, {alignItems: 'flex-start'}]}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('ProfileScreen')}
+                                      style={[styles.button, {alignItems: 'flex-start'}]}>
                         <Text style={[styles.buttonText, {marginLeft: 15}]}>PROFIL</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={[styles.buttonContainer, {marginBottom: 120}]}>
-                    <TouchableOpacity style={[styles.button, {alignItems: 'flex-end', marginRight: 35}]}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('StatsScreen')}
+                                      style={[styles.button, {alignItems: 'flex-end', marginRight: 35}]}>
                         <Text style={[styles.buttonText, {marginRight: 15}]}>STATISTIQUES</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.button, {alignItems: 'flex-start'}]}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('')}
+                                      style={[styles.button, {alignItems: 'flex-start'}]}>
                         <Text style={[styles.buttonText, {marginLeft: 15}]}>BOUTIQUE</Text>
                     </TouchableOpacity>
                 </View>
