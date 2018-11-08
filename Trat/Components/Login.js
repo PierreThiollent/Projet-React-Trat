@@ -1,6 +1,6 @@
 import React from 'react';
-import {Dimensions, ImageBackground, StyleSheet, Text, TextInput, View} from 'react-native';
-import {Button} from 'native-base';
+import {Dimensions, ImageBackground, StyleSheet, View} from 'react-native';
+import {Button, FormInput, FormLabel} from 'react-native-elements'
 
 
 export default class Login extends React.Component {
@@ -9,38 +9,29 @@ export default class Login extends React.Component {
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/Images/Login.png')} style={styles.backgroundImage}>
                     <View style={styles.inputContainer}>
-                        <TextInput
+                        <FormLabel>Identifiant :</FormLabel>
+                        <FormInput
                             keyboardType='email-address'
-                            disableFullscreenUI={false}
-                            style={styles.input}
-                            placeholder='Identifiant :'
-                            selectionColor='white'
-                            placeholderTextColor='white'
+                            returnKeyType='next'
                         />
-                        <TextInput
-                            style={styles.input}
-                            placeholder='Mot de passe :'
+                        <FormLabel>Mot de passe :</FormLabel>
+                        <FormInput
                             secureTextEntry={true}
-                            selectionColor={'white'}
-                            placeholderTextColor={'white'}
+                            returnKeyType='next'
                         />
-                        <TextInput
-                            style={styles.input}
-                            clearTextOnFocus={true}
-                            placeholder='Code Premium :'
-                            selectionColor='white'
-                            placeholderTextColor='white'
+                        <FormLabel>Code Premium : </FormLabel>
+                        <FormInput
+                            returnKeyType='next'
                         />
+
                     </View>
                     <Button
-                        style={{marginTop: 20}}
-                        full
+                        raised
                         rounded
-                        success
-                        onPress={() => this.props.navigation.navigate('HomeScreen')}
-                    >
-                        <Text>Connexion</Text>
-                    </Button>
+                        rightIcon={{name: 'input'}}
+                        title='Connexion'
+                        backgroundColor='green'
+                    />
                 </ImageBackground>
             </View>
         );
@@ -58,14 +49,11 @@ const styles = StyleSheet.create({
         height: 90 + '%',
         justifyContent: 'flex-end',
         alignItems: 'center',
-        zIndex: 100,
-        position: 'absolute'
     },
     inputContainer: {
-        height: 160,
+        width: 90 + "%",
         justifyContent: 'space-between',
         marginBottom: 40,
-        zIndex: -1
     },
     input: {
         borderRadius: 50,
