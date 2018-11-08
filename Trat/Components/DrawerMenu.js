@@ -20,17 +20,17 @@ export default class DrawerMenu extends React.Component {
                         <Image source={require('../assets/Images/TratIco.png')}/>
                     </TouchableOpacity>
                     <Text
-                        onPress={() => this.props.navigation.navigate('HomeScreen')}
+                        onPress={() => this.props.navigation.navigate('SelectQuiz')}
                         style={styles.uglyDrawerItem}>
                         QUIZ
                     </Text>
                     <Text
-                        onPress={() => this.props.navigation.navigate('LoginScreen')}
+                        onPress={() => this.props.navigation.navigate('ProfileScreen')}
                         style={styles.uglyDrawerItem}>
                         PROFIL
                     </Text>
                     <Text
-                        onPress={() => this.props.navigation.navigate('HomeScreen')}
+                        onPress={() => this.props.navigation.navigate('StatsScreen')}
                         style={styles.uglyDrawerItem}>
                         STATISITIQUES
                     </Text>
