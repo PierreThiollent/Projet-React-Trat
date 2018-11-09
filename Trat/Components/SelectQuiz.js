@@ -11,7 +11,7 @@ export default class SelectQuiz extends React.Component {
     }
 
     render() {
-        console.log(this.state.type, this.state.time);
+        console.log("Type de quiz : " +this.state.type, "/ Temps choisi : " +this.state.time);
         return (
             <ImageBackground source={require('../assets/Images/SelecQuiz.png')} style={styles.container}>
                 <View
