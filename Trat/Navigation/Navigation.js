@@ -8,8 +8,6 @@ import Profile from "../Components/Profile";
 import Stats from "../Components/Stats";
 import SelectThemePremium from "../Components/SelectThemePremium";
 import PremiumQuizVue from "../Components/PremiumQuizVue";
-import Stats from "../Components/Stats";
-import Profile from "../Components/Profile";
 
 
 const AppStackNavigation = createStackNavigator(
@@ -39,12 +37,7 @@ const AppStackNavigation = createStackNavigator(
         },
         ProfileScreen: {
             screen: Profile
-<<<<<<< Updated upstream
         }
-=======
-        },
->>>>>>> Stashed changes
-
     },
 
     {

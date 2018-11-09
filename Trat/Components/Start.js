@@ -20,6 +20,8 @@ firebase.auth().signInAnonymously().catch(function (error) {
 
 export default class Start extends React.Component {
 
+
+
     signInAnonymous = () => {
         firebase.auth().onAuthStateChanged(function (user) {
 
@@ -39,13 +41,14 @@ export default class Start extends React.Component {
     };
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = ({
             newToken: false,
         })
     }
 
     componentDidMount() {
+        this.animation.play();
         firebase.auth().onAuthStateChanged((user) => {
             if (user != null && this.state.newToken === true) {
                 this.props.navigation.navigate('HomeScreen');
@@ -54,15 +57,21 @@ export default class Start extends React.Component {
         })
     }
 
+
     render() {
         return (
             <ImageBackground source={require('../assets/Images/Start.png')} style={styles.container}>
+                <View style={{width: 160+"%", height: 400, flex: 2, justifyContent: 'center'}}>
                 <LottieView
+                    ref={animation => {
+                        this.animation =animation;
+                    }}
                     autoPlay
+                    autoSize={false}
                     loop={false}
-                    style={{width: 100+'%', height: 300, marginTop: 20}}
-                    source={require('../Animations/logo.json')}
+                    source={require('../Animations/logo')}
                 />
+                </View>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity
                         onPress={() => {
@@ -94,7 +103,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonContainer: {
-        flex:1,
+        flex:2,
         marginTop: 80
     },
     button: {

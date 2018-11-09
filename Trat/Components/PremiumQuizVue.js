@@ -10,42 +10,10 @@ import {
     TouchableOpacity,
     View
 } from 'react-native'
+import CountdownCircle from 'react-native-countdown-circle';
 import {jsonCGData} from "../Data/CGQuizDataFacile1";
 
 export default class PremiumQuizVue extends React.Component {
-
-    _Next = () => {
-        this._scoring();
-        if (this.state.count === 10) {
-            this.setState({enable: true})
-        }
-        else {
-            this.setState({
-                    count: this.state.count + 1,
-                    response: false,
-                    disable: false,
-                    enable: false,
-                    qn: false
-                }
-            )
-
-        }
-    };
-    _scoring = () => {
-        console.log(this.state.qn, "qn debut");
-        if (this.state.qn === true) {
-            this.setState({
-                    score: this.state.score + 1,
-                }
-            );
-            console.log("true");
-        }
-
-        else {
-            return (null);
-
-        }
-    };
 
     constructor(props) {
         super(props);
@@ -56,13 +24,62 @@ export default class PremiumQuizVue extends React.Component {
             disable: false,
             enable: false,
             visible: false,
-            response: false
+            response: false,
+            timer: 10,
         })
     }
+
+    _Next = () => {
+        this._scoring();
+        if (this.state.count === 10) {
+            this.setState({
+                enable: true
+            })
+        }
+        else {
+            this.setState({
+                    count: this.state.count + 1,
+                    response: false,
+                    disable: false,
+                    enable: false,
+                    qn: false,
+                }
+            )
+        }
+    };
+
+    _scoring = () => {
+        if (this.state.qn === true) {
+            this.setState({
+                    score: this.state.score + 1,
+                }
+            );
+            console.log("Score : " + this.state.score);
+        }
+
+        else {
+            return (null);
+        }
+    };
 
     render() {
         return (
             <ImageBackground style={styles.main_container}>
+                <View style={styles.timer}>
+                    <CountdownCircle
+                        seconds={this.state.timer}
+                        radius={30}
+                        borderWidth={4}
+                        color="#FCB045"
+                        bgColor="#fff"
+                        textStyle={{fontSize: 20}}
+                        onTimeElapsed={() => this.setState({
+                            visible: true,
+                            response: true,
+                            timer: 1
+                        })}
+                    />
+                </View>
                 <View style={styles.head_container}>
                     <Image source={require('../assets/Images/QTP.png')}/>
                 </View>
@@ -80,6 +97,7 @@ export default class PremiumQuizVue extends React.Component {
                                                                     response: true,
                                                                     disable: true,
                                                                     visible: true,
+                                                                    timer: 1
                                                                 });
                                                             }}
                                                             underlayColor={"yellow"}
@@ -97,15 +115,18 @@ export default class PremiumQuizVue extends React.Component {
                        visible={this.state.visible}
                        onPress={() => {
                            this._Next();
-                           this.setState({visible: false})
+                           this.setState({
+                               visible: false,
+                           })
                        }}
                 >
-
-
                     <TouchableOpacity style={styles.modal}
                                       onPress={() => {
                                           this._Next();
-                                          this.setState({visible: false})
+                                          this.setState({
+                                              visible: false,
+                                              timer: 10
+                                          })
                                       }}>
                     </TouchableOpacity>
                 </Modal>
@@ -149,8 +170,14 @@ const styles = StyleSheet.create({
     pic: {
         flex: 3,
         flexDirection: 'row',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
 
+    },
+    timer: {
+        position: 'absolute',
+        top: '5%',
+        right: '5%',
+        zIndex: 10,
     },
     quiz: {
         justifyContent: 'space-between',
@@ -161,7 +188,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         textAlign: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         marginBottom: 40,
 
     },
@@ -171,7 +198,7 @@ const styles = StyleSheet.create({
         height: 100,
         borderRadius: 5,
         color: 'white',
-        fontSize: 17,
+        fontSize: 25,
         justifyContent: 'center',
 
     },
