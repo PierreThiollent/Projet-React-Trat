@@ -18,10 +18,10 @@ export const jsonCGData = {
         	images: <Image source={require('./assetsData/CultureG/Facile/cut/QCG2.png')}/>,
             title: "On dit qu’un cheval…",
             answer: [
-                {nom: "hurle", res: false},
-                {nom: "blatère", res: false},
-                {nom: "hennit", res: true},
-                {nom: "rugit", res: false}
+                {nom: "Hurle", res: false},
+                {nom: "Blatère", res: false},
+                {nom: "Hennit", res: true},
+                {nom: "Rugit", res: false}
             ]
         },
         {
@@ -111,8 +111,8 @@ export const jsonCGData = {
             answer: [
                 {nom: "Sphérique", res: false},
                 {nom: "Cylindrique", res: false},
-                {nom: "triangulaire", res: false},
-                {nom: "cubique", res: true}
+                {nom: "Triangulaire", res: false},
+                {nom: "Cubique", res: true}
             ]
         },
     ]

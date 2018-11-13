@@ -4,7 +4,7 @@ import * as firebase from 'firebase';
 import LottieView from 'lottie-react-native';
 
 // Initialize Firebase
-export var config = {
+export var firebaseConfig = {
     apiKey: "AIzaSyDZABsfg5EI--eO4N2AogYOJMfrM7DMl0s",
     authDomain: "trat-46dbc.firebaseapp.com",
     databaseURL: "https://trat-46dbc.firebaseio.com",
@@ -12,15 +12,14 @@ export var config = {
     storageBucket: "trat-46dbc.appspot.com",
     messagingSenderId: "529381865694"
 };
-firebase.initializeApp(config);
+firebase.initializeApp(firebaseConfig);
+
 firebase.auth().signInAnonymously().catch(function (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
 });
 
 export default class Start extends React.Component {
-
-
 
     signInAnonymous = () => {
         firebase.auth().onAuthStateChanged(function (user) {
@@ -51,8 +50,8 @@ export default class Start extends React.Component {
         this.animation.play();
         firebase.auth().onAuthStateChanged((user) => {
             if (user != null && this.state.newToken === true) {
-                this.props.navigation.navigate('HomeScreen');
                 console.log(user);
+                this.props.navigation.navigate('HomeScreen');
             }
         })
     }
@@ -64,7 +63,7 @@ export default class Start extends React.Component {
                 <View style={{width: 160+"%", height: 400, flex: 2, justifyContent: 'center'}}>
                 <LottieView
                     ref={animation => {
-                        this.animation =animation;
+                        this.animation=animation;
                     }}
                     autoPlay
                     autoSize={false}
@@ -75,7 +74,7 @@ export default class Start extends React.Component {
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity
                         onPress={() => {
-                            this.props.navigation.navigate('HomeScreen')
+                            this.props.navigation.navigate('LoginScreen')
                         }}
                         style={styles.button}>
                         <Text style={styles.buttonText}>Accès Etudiant</Text>
@@ -83,7 +82,6 @@ export default class Start extends React.Component {
                     <TouchableOpacity
                         onPress={() => {
                             this.signInAnonymous();
-                            this.setState({newToken: true})
                         }}
                         style={styles.button}>
                         <Text style={styles.buttonText}>Accès à l'application</Text>
