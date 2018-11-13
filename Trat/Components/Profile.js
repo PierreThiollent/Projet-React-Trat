@@ -3,8 +3,8 @@ import {Dimensions, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, 
 import ProgressCircle from 'react-native-progress-circle'
 import { connect } from 'react-redux'
 
-
 class Profile extends React.Component {
+
 
     _percentage = () => {
         this.setState({
@@ -58,8 +58,6 @@ class Profile extends React.Component {
     }
 
     render() {
-        console.log(this.state.percent);
-        console.log(this.state.score);
         return (
             <ImageBackground source={require('../assets/Images/Profile.png')} style={styles.container}>
                 <View style={styles.burger}>
