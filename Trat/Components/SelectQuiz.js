@@ -9,6 +9,16 @@ export default class SelectQuiz extends React.Component {
             time: 0
         })
     }
+
+    _navigation() {
+        switch (this.state.type) {
+            case  "premium":
+                return this.props.navigation.navigate("SelectThemePremium");
+            case  "simple":
+                return this.props.navigation.navigate("SelectThemeSimple");
+            default: console.log("error");
+        }
+    }
     
     render() {
         console.log("Type de quiz : " +this.state.type, "/ Temps choisi : " +this.state.time);
@@ -85,7 +95,7 @@ export default class SelectQuiz extends React.Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.go}>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SelectThemePremium')}>
+                    <TouchableOpacity onPress={() => this._navigation()}>
                         <Image source={require('../assets/Images/Go.png')}/>
                     </TouchableOpacity>
                 </View>
