@@ -7,8 +7,9 @@ import DrawerMenu from "../Components/DrawerMenu";
 import Profile from "../Components/Profile";
 import Stats from "../Components/Stats";
 import SelectThemePremium from "../Components/SelectThemePremium";
-import PremiumQuizVue from "../Components/PremiumQuizVue";
-
+import CulturegPremiumQuiz from "../Components/CulturegPremiumQuiz";
+import SciencesPremiumQuiz from "../Components/CulturegPremiumQuiz";
+import SelectThemeSimple from "../Components/SelectThemeSimple";
 
 const AppStackNavigation = createStackNavigator(
     {
@@ -25,12 +26,18 @@ const AppStackNavigation = createStackNavigator(
         SelectQuiz: {
             screen: SelectQuiz
         },
+        SelectThemeSimple: {
+            screen: SelectThemeSimple
+        },
 
         SelectThemePremium: {
             screen: SelectThemePremium
         },
-        PremiumQuizVue: {
-            screen: PremiumQuizVue
+        CulturegPremiumQuiz: {
+            screen: CulturegPremiumQuiz
+        },
+        SciencesPremiumQuiz: {
+            screen: SciencesPremiumQuiz
         },
         StatsScreen: {
             screen: Stats
@@ -41,7 +48,7 @@ const AppStackNavigation = createStackNavigator(
     },
 
     {
-        initialRouteName: 'StartScreen',
+        initialRouteName: 'SelectThemePremium',
         navigationOptions: {
             header: null,
             headerStyle: {

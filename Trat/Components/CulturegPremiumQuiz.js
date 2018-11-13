@@ -13,27 +13,15 @@ import {
 import CountdownCircle from 'react-native-countdown-circle';
 import {jsonCGData} from "../Data/CGQuizDataFacile1";
 
-export default class PremiumQuizVue extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = ({
-            count: 0,
-            score: 0,
-            qn: false,
-            disable: false,
-            enable: false,
-            visible: false,
-            response: false,
-            timer: 10,
-        })
-    }
+export default class CulturegPremiumQuiz extends React.Component {
 
     _Next = () => {
         this._scoring();
+        this._xp();
         if (this.state.count === 10) {
             this.setState({
-                enable: true
+                enable: true,
+                timer: 1
             })
         }
         else {
@@ -47,22 +35,47 @@ export default class PremiumQuizVue extends React.Component {
             )
         }
     };
-
     _scoring = () => {
         if (this.state.qn === true) {
             this.setState({
                     score: this.state.score + 1,
                 }
             );
-            console.log("Score : " + this.state.score);
         }
 
         else {
-            return (null);
+            return this.state.score;
+        }
+    };
+    _xp = () => {
+        if (this.state.qn === true) {
+            this.setState({
+                    xp: this.state.xp + 10
+                }
+            )
+        }
+        else {
+            return this.state.xp;
         }
     };
 
+    constructor(props) {
+        super(props);
+        this.state = ({
+            count: 0,
+            score: 0,
+            qn: false,
+            disable: false,
+            enable: false,
+            visible: false,
+            response: false,
+            timer: 30,
+            xp: 0
+        })
+    }
+
     render() {
+        console.log(this.props);
         return (
             <ImageBackground style={styles.main_container}>
                 <View style={styles.timer}>
@@ -75,8 +88,8 @@ export default class PremiumQuizVue extends React.Component {
                         textStyle={{fontSize: 20}}
                         onTimeElapsed={() => this.setState({
                             visible: true,
+                            timer: 1,
                             response: true,
-                            timer: 1
                         })}
                     />
                 </View>
@@ -94,54 +107,45 @@ export default class PremiumQuizVue extends React.Component {
                                                             onPress={() => {
                                                                 this.setState({
                                                                     qn: el.res,
+                                                                    timer: 1,
                                                                     response: true,
                                                                     disable: true,
                                                                     visible: true,
-                                                                    timer: 1
                                                                 });
                                                             }}
-                                                            underlayColor={"yellow"}
                                 >
                                     <Text>{el.nom}</Text>
-
                                 </TouchableHighlight>)
                             })
                         }
                     </View>
                 </View>
-                <Modal style={styles.modal}
-                       animationType="slide"
-                       transparent={true}
-                       visible={this.state.visible}
-                       onPress={() => {
-                           this._Next();
-                           this.setState({
-                               visible: false,
-                           })
-                       }}
-                >
+                <Modal
+                    style={styles.modal}
+                    animationType="slide"
+                    transparent={true}
+                    visible={this.state.visible}>
                     <TouchableOpacity style={styles.modal}
                                       onPress={() => {
                                           this._Next();
                                           this.setState({
                                               visible: false,
-                                              timer: 10
+                                              timer: 30
                                           })
                                       }}>
                     </TouchableOpacity>
                 </Modal>
-                <Modal animationType="slide"
-                       transparent={true}
-                       visible={this.state.enable}
-                       onRequestClose={() => {
-                           this.props.navigation.navigate("HomeScreen");
-                       }}>
-                    <ImageBackground style={styles.result}>
-                        <Text style={{color: '#fff'}}>
-                            Le Quiz est terminé
-                        </Text>
+                < Modal
+                    animationType="slide"
+                    visible={this.state.enable}
+                    onRequestClose={() => {
 
+                        this.props.navigation.navigate("HomeScreen");
+                    }
+                    }>
+                    <ImageBackground source={require('../assets/Images/Result.png')} style={styles.result}>
                         <View style={styles.buttonContainer}>
+                            <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>Le Quiz est terminé !</Text>
                             <TouchableOpacity
                                 style={styles.button}
                                 onPress={() => {
@@ -150,6 +154,11 @@ export default class PremiumQuizVue extends React.Component {
                                 }}>
                                 <Text style={{textAlign: 'center',}}>{"Score: " + this.state.score + " /  11"}</Text>
                             </TouchableOpacity>
+                            <Text style={{
+                                textAlign: 'center',
+                                color: "white",
+                                fontSize: 25
+                            }}>{"+ " + this.state.xp + "XP"}</Text>
                         </View>
                     </ImageBackground>
                 </Modal>
@@ -235,6 +244,7 @@ const styles = StyleSheet.create({
         marginTop: 50,
         justifyContent: 'center',
         alignItems: 'center',
+
     },
     button: {
         borderRadius: 50,
@@ -245,6 +255,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderWidth: 1,
         alignContent: 'center',
+        marginBottom: 20
     },
 
 });

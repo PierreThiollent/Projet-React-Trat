@@ -1,12 +1,12 @@
 import React from 'react'
 import {Image, ImageBackground, StyleSheet, TouchableOpacity, View, ScrollView, Text} from 'react-native'
 
-export default class SelectThemePremium extends React.Component {
+export default class SelectThemeSimple extends React.Component {
     render() {
         return (
             <ImageBackground style={styles.main_container}>
                 <View style={styles.head_container}>
-                    <Image source={require('../assets/Images/QTP.png')}/>
+                    <Image source={require('../assets/Images/QTS.png')}/>
                     <TouchableOpacity
                         style={styles.burger}
                         onPress={() => this.props.navigation.openDrawer()}
@@ -21,7 +21,7 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("CulturegPremiumQuiz")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/CultureG.png')}/>
+                                <Image source={require('../assets/Images/Theme/Simple/CultureG.png')}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Culture générale
@@ -31,7 +31,7 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Histoire.png')}/>
+                                <Image source={require('../assets/Images/Theme/Simple/Histoire.png')}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Histoire
@@ -41,7 +41,7 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Langues.png')}/>
+                                <Image source={require('../assets/Images/Theme/Simple/Langues.png')}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Langues
@@ -53,7 +53,7 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Sport.png')}/>
+                                <Image source={require('../assets/Images/Theme/Simple/Sport.png')}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Sport
@@ -63,7 +63,7 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("SciencesPremiumQuiz")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Science.png')}/>
+                                <Image source={require('../assets/Images/Theme/Simple/Science.png')}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Sciences
@@ -73,7 +73,7 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Arts.png')}/>
+                                <Image source={require('../assets/Images/Theme/Simple/Arts.png')}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Arts
@@ -85,7 +85,7 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Numérique.png')}/>
+                                <Image source={require('../assets/Images/Theme/Simple/Numerique.png')}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Numérique
@@ -95,7 +95,7 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/TV.png')}/>
+                                <Image source={require('../assets/Images/Theme/Simple/TV.png')}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Tv
@@ -105,7 +105,7 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Musique.png')}/>
+                                <Image source={require('../assets/Images/Theme/Simple/Musique.png')}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Musique
@@ -117,17 +117,17 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Animaux.png')}/>
+                                <Image source={require('../assets/Images/Theme/Simple/Animaux.png')}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
-                                Animaux
+                                Annimaux
                             </Text>
                         </View>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/JeuxVideo.png')}/>
+                                <Image source={require('../assets/Images/Theme/Simple/JeuxVideo.png')}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Jeux
@@ -137,7 +137,7 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Nourriture.png')}/>
+                                <Image source={require('../assets/Images/Theme/Simple/Nourriture.png')}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Nourriture
@@ -149,7 +149,7 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Sante.png')}/>
+                                <Image source={require('../assets/Images/Theme/Simple/Sante.png')}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Santé

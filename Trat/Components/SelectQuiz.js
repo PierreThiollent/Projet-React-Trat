@@ -9,7 +9,7 @@ export default class SelectQuiz extends React.Component {
             time: 0
         })
     }
-
+    
     render() {
         console.log("Type de quiz : " +this.state.type, "/ Temps choisi : " +this.state.time);
         return (
