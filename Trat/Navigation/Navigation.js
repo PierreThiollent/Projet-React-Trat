@@ -8,6 +8,7 @@ import SelectThemePremium from "../Components/SelectThemePremium";
 import CulturegPremiumQuiz from "../Components/CulturegPremiumQuiz";
 import Stats from "../Components/Stats";
 import Profile from "../Components/Profile";
+import SelectThemeSimple from "../Components/SelectThemeSimple";
 
 
 const AppStackNavigation = createStackNavigator(
@@ -28,6 +29,9 @@ const AppStackNavigation = createStackNavigator(
 
         SelectThemePremium: {
             screen: SelectThemePremium
+        },
+        SelectThemeSimple: {
+            screen: SelectThemeSimple
         },
         CulturegPremiumQuiz: {
             screen: CulturegPremiumQuiz
