@@ -43,11 +43,6 @@ class Profile extends React.Component {
 
         };
 
-
-
-
-
-
     constructor(props) {
         super(props);
         this.state = ({
@@ -88,7 +83,7 @@ class Profile extends React.Component {
                         <Image source={require('../assets/Images/profileImage.jpg')} />
                     </ProgressCircle>
                     <Text style={styles.avatarText}>Niveau {this.state.level}</Text>
-                    <Text style={styles.avatarText}>{this.state.percent}%</Text>
+                    <Text style={styles.avatarText}>{this.props.exp} %</Text>
                 </View>
                 <View style={styles.gamesContainer}>
                     <TouchableOpacity>

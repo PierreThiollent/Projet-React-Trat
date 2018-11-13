@@ -1,39 +1,17 @@
 import React from 'react'
-import {
-    Dimensions,
-    Image,
-    ImageBackground,
-    Modal,
-    StyleSheet,
-    Text,
-    TouchableHighlight,
-    TouchableOpacity,
-    View
-} from 'react-native'
+import {Dimensions, Image, ImageBackground, Modal, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native'
 import CountdownCircle from 'react-native-countdown-circle';
-import {jsonCGData} from "../Data/CGQuizDataFacile1";
-import { connect } from 'react-redux'
+import {jsonCGData} from "../Data/CGQuizDataFacile";
+import {connect} from 'react-redux'
+import shuffle from 'shuffle-array'
 
+const jsonData = shuffle.pick(jsonCGData.questions, { 'picks' : 20});
 
-class PremiumQuizVue extends React.Component {
-
-    constructor(props) {
-        super(props)
-        this.state = ({
-            count: 0,
-            score: 0,
-            qn: false,
-            disable: false,
-            enable: false,
-            visible: false,
-            response: false,
-            timer: 10,
-        })
-    }
+class CulturegPremiumQuiz extends React.Component {
 
     _Next = () => {
         this._scoring();
-        if (this.state.count === 10) {
+        if (this.state.count === jsonData.length - 1) {
             this.setState({
                 enable: true
             })
@@ -49,13 +27,6 @@ class PremiumQuizVue extends React.Component {
             )
         }
     };
-
-
-    updateExp() {
-        const action = { type: "UPD_EXP", value: +10};
-        this.props.dispatch(action)
-    }
-
     _scoring = () => {
         if (this.state.qn === true) {
             this.updateExp();
@@ -72,8 +43,26 @@ class PremiumQuizVue extends React.Component {
         }
     };
 
+    constructor(props) {
+        super(props)
+        this.state = ({
+            count: 0,
+            score: 0,
+            qn: false,
+            disable: false,
+            enable: false,
+            visible: false,
+            response: false,
+            timer: 30,
+        })
+    }
+
+    updateExp() {
+        const action = {type: "UPD_EXP", value: +10};
+        this.props.dispatch(action)
+    }
+
     render() {
-        console.log(this.props.exp);
         return (
             <ImageBackground style={styles.main_container}>
                 <View style={styles.timer}>
@@ -94,12 +83,12 @@ class PremiumQuizVue extends React.Component {
                 <View style={styles.head_container}>
                     <Image source={require('../assets/Images/QTP.png')}/>
                 </View>
-                <View style={styles.pic}>{jsonCGData.questions[this.state.count].images}</View>
+                <View style={styles.pic}>{jsonData[this.state.count].images}</View>
                 <View style={styles.quiz}>
-                    <Text style={styles.questions}>{jsonCGData.questions[this.state.count].title}</Text>
+                    <Text style={styles.questions}>{jsonData[this.state.count].title}</Text>
                     <View style={styles.q_container}>
                         {
-                            jsonCGData.questions[this.state.count].answer.map((el) => {
+                            jsonData[this.state.count].answer.map((el) => {
                                 return (<TouchableHighlight disabled={this.state.disable}
                                                             style={[styles.answerButton, {backgroundColor: (el.res === true && this.state.response === true) ? "#006400" : "white"}]}
                                                             onPress={() => {
@@ -108,7 +97,7 @@ class PremiumQuizVue extends React.Component {
                                                                     response: true,
                                                                     disable: true,
                                                                     visible: true,
-                                                                    timer: 1
+                                                                    timer: 1,
                                                                 });
                                                             }}
                                                             underlayColor={"white"}>
@@ -129,34 +118,31 @@ class PremiumQuizVue extends React.Component {
                                           this._Next();
                                           this.setState({
                                               visible: false,
-                                              timer: 10
+                                              timer: 30
                                           })
                                       }}>
                     </TouchableOpacity>
                 </Modal>
                 <Modal animationType="slide"
-                       transparent={true}
                        visible={this.state.enable}
-                       onRequestClose={() => {
+                       onPress={() => {
                            this.props.navigation.navigate("HomeScreen");
                            this.setState({
                                count: 0,
                            })
                        }}>
-                    <ImageBackground style={styles.result}>
-                        <Text style={{color: '#fff'}}>
-                            Le Quiz est terminé
-                        </Text>
-
+                    <ImageBackground source={require('../assets/Images/Result.png')} style={styles.result}>
                         <View style={styles.buttonContainer}>
+                            <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>Le Quiz est terminé</Text>
                             <TouchableOpacity
                                 style={styles.button}
                                 onPress={() => {
                                     this.props.navigation.navigate("HomeScreen");
                                     this.setState({enable: false})
                                 }}>
-                                <Text style={{textAlign: 'center',}}>{"Score: " + this.state.score + " /  11"}</Text>
+                                <Text style={{textAlign: 'center',}}>{"Score: " + this.state.score + " / " + jsonData.length}</Text>
                             </TouchableOpacity>
+                            <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>+ {this.props.exp} XP</Text>
                         </View>
                     </ImageBackground>
                 </Modal>
@@ -252,6 +238,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderWidth: 1,
         alignContent: 'center',
+        marginBottom: 20
     },
 
 });
@@ -261,4 +248,4 @@ const mapStateToProps = (state) => {
         exp: state.exp
     }
 };
-export default connect(mapStateToProps) (PremiumQuizVue)
+export default connect(mapStateToProps)(CulturegPremiumQuiz)
