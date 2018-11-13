@@ -12,11 +12,13 @@ import {
 } from 'react-native'
 import CountdownCircle from 'react-native-countdown-circle';
 import {jsonCGData} from "../Data/CGQuizDataFacile1";
+import { connect } from 'react-redux'
 
-export default class PremiumQuizVue extends React.Component {
+
+class PremiumQuizVue extends React.Component {
 
     constructor(props) {
-        super(props);
+        super(props)
         this.state = ({
             count: 0,
             score: 0,
@@ -48,10 +50,18 @@ export default class PremiumQuizVue extends React.Component {
         }
     };
 
+
+    updateExp() {
+        const action = { type: "UPD_EXP", value: +10};
+        this.props.dispatch(action)
+    }
+
     _scoring = () => {
         if (this.state.qn === true) {
+            this.updateExp();
             this.setState({
                     score: this.state.score + 1,
+
                 }
             );
             console.log("Score : " + this.state.score);
@@ -63,6 +73,7 @@ export default class PremiumQuizVue extends React.Component {
     };
 
     render() {
+        console.log(this.props.exp);
         return (
             <ImageBackground style={styles.main_container}>
                 <View style={styles.timer}>
@@ -100,8 +111,7 @@ export default class PremiumQuizVue extends React.Component {
                                                                     timer: 1
                                                                 });
                                                             }}
-                                                            underlayColor={"yellow"}
-                                >
+                                                            underlayColor={"white"}>
                                     <Text>{el.nom}</Text>
 
                                 </TouchableHighlight>)
@@ -113,12 +123,6 @@ export default class PremiumQuizVue extends React.Component {
                        animationType="slide"
                        transparent={true}
                        visible={this.state.visible}
-                       onPress={() => {
-                           this._Next();
-                           this.setState({
-                               visible: false,
-                           })
-                       }}
                 >
                     <TouchableOpacity style={styles.modal}
                                       onPress={() => {
@@ -135,6 +139,9 @@ export default class PremiumQuizVue extends React.Component {
                        visible={this.state.enable}
                        onRequestClose={() => {
                            this.props.navigation.navigate("HomeScreen");
+                           this.setState({
+                               count: 0,
+                           })
                        }}>
                     <ImageBackground style={styles.result}>
                         <Text style={{color: '#fff'}}>
@@ -248,3 +255,10 @@ const styles = StyleSheet.create({
     },
 
 });
+
+const mapStateToProps = (state) => {
+    return {
+        exp: state.exp
+    }
+};
+export default connect(mapStateToProps) (PremiumQuizVue)

@@ -1,9 +1,10 @@
 import React from 'react';
 import {Dimensions, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import ProgressCircle from 'react-native-progress-circle'
+import { connect } from 'react-redux'
 
 
-export default class Profile extends React.Component {
+class Profile extends React.Component {
 
     _percentage = () => {
         this.setState({
@@ -164,3 +165,10 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     }
 });
+
+const mapStateToProps = (state) => {
+    return {
+        exp: state.exp
+    }
+};
+export default connect(mapStateToProps) (Profile)

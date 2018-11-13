@@ -4,10 +4,10 @@ import Login from '../Components/Login'
 import Home from '../Components/Home'
 import SelectQuiz from "../Components/SelectQuiz";
 import DrawerMenu from "../Components/DrawerMenu";
-import Profile from "../Components/Profile";
-import Stats from "../Components/Stats";
 import SelectThemePremium from "../Components/SelectThemePremium";
 import PremiumQuizVue from "../Components/PremiumQuizVue";
+import Stats from "../Components/Stats";
+import Profile from "../Components/Profile";
 
 
 const AppStackNavigation = createStackNavigator(
@@ -37,11 +37,11 @@ const AppStackNavigation = createStackNavigator(
         },
         ProfileScreen: {
             screen: Profile
-        }
+        },
     },
 
     {
-        initialRouteName: 'StartScreen',
+        initialRouteName: 'SelectThemePremium',
         navigationOptions: {
             header: null,
             headerStyle: {

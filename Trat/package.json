@@ -17,7 +17,9 @@
     "react-native-countdown-circle": "^3.0.0",
     "react-native-elements": "^0.19.1",
     "react-native-progress-circle": "^2.0.1",
-    "react-navigation": "latest"
+    "react-navigation": "latest",
+    "react-redux": "^5.1.0",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
