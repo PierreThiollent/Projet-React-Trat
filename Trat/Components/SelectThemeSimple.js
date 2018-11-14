@@ -6,7 +6,7 @@ export default class SelectThemeSimple extends React.Component {
         return (
             <ImageBackground style={styles.main_container}>
                 <View style={styles.head_container}>
-                    <Image source={require('../assets/Images/QTS.png')}/>
+                    <Image source={require('../assets/Images/Theme/Simple/Logo.png')}/>
                     <TouchableOpacity
                         style={styles.burger}
                         onPress={() => this.props.navigation.openDrawer()}

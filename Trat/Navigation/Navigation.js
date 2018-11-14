@@ -31,8 +31,9 @@ const AppStackNavigation = createStackNavigator(
             screen: SelectThemePremium
         },
         SelectThemeSimple: {
-            screen: SelectThemeSimple
+            screen: SelectThemeSimple,
         },
+
         CulturegPremiumQuiz: {
             screen: CulturegPremiumQuiz
         },
@@ -43,7 +44,6 @@ const AppStackNavigation = createStackNavigator(
             screen: Profile
         },
     },
-
     {
         initialRouteName: 'StartScreen',
         navigationOptions: {

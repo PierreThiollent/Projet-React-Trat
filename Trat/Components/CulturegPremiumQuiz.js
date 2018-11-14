@@ -1,7 +1,7 @@
 import React from 'react'
 import {Dimensions, Image, ImageBackground, Modal, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native'
 import CountdownCircle from 'react-native-countdown-circle';
-import {jsonCGData} from "../Data";
+import {jsonCGData} from "../Data/CGQuizDataFacile";
 import {connect} from 'react-redux'
 import shuffle from 'shuffle-array'
 
@@ -80,12 +80,11 @@ class CulturegPremiumQuiz extends React.Component {
                         onTimeElapsed={() => this.setState({
                             visible: true,
                             response: true,
-                            timer: 1
                         })}
                     />
                 </View>
                 <View style={styles.head_container}>
-                    <Image source={require('../assets/Images/QTP.png')}/>
+                    <Image source={require('../assets/Images/Theme/Premium/Logo.png')}/>
                 </View>
                 <View style={styles.pic}>{this.jsonData[this.state.count].images}</View>
                 <View style={styles.quiz}>

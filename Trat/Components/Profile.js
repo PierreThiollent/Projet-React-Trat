@@ -1,7 +1,7 @@
 import React from 'react';
 import {Dimensions, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import ProgressCircle from 'react-native-progress-circle'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
 class Profile extends React.Component {
 
@@ -10,15 +10,14 @@ class Profile extends React.Component {
         this.setState({
             score: this.state.score + 1,
         });
-        if (this.state.percent >= 100 ) {
+        if (this.state.percent >= 100) {
             this.setState({
                     percent: 0,
                     level: this.state.level + 1,
                 }
             );
-
         }
-        else{
+        else {
             if (this.state.score < 10) {
                 this.setState({
                         percent: this.state.percent + 10,
@@ -26,11 +25,11 @@ class Profile extends React.Component {
                 );
                 console.log(this.state.percent);
             }
-            else if (this.state.score >= 10 && this.state.score < 28 ) {
+            else if (this.state.score >= 10 && this.state.score < 28) {
                 this.setState({
-                    percent: this.state.percent + 6.5,
-                }
-            );
+                        percent: this.state.percent + 6.5,
+                    }
+                );
             }
             else {
                 this.setState({
@@ -41,7 +40,7 @@ class Profile extends React.Component {
 
         }
 
-        };
+    };
 
     constructor(props) {
         super(props);
@@ -53,6 +52,7 @@ class Profile extends React.Component {
     }
 
     render() {
+        console.log(this.props.name);
         return (
             <ImageBackground source={require('../assets/Images/Profile.png')} style={styles.container}>
                 <View style={styles.burger}>
@@ -64,12 +64,12 @@ class Profile extends React.Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.header}>
-                        <Text style={styles.title}>PROFIL</Text>
+                    <Text style={styles.title}>PROFIL</Text>
 
-                <View style={styles.userInfos}>
-                    <Text style={styles.title}>Martin HERICHE</Text>
-                    <Text style={{fontSize:17, color:'white', marginLeft: 15}}>Etudiant en Web Design</Text>
-                </View>
+                    <View style={styles.userInfos}>
+                        <Text style={styles.title}>{this.props.name}</Text>
+                        <Text style={{fontSize: 17, color: 'white', marginLeft: 15}}>Etudiant en Web Design</Text>
+                    </View>
                 </View>
                 <View style={styles.avatar}>
                     <ProgressCircle
@@ -80,7 +80,7 @@ class Profile extends React.Component {
                         shadowColor="#FFF"
                         bgColor="rgba(0, 0, 0, 0.3)"
                     >
-                        <Image source={require('../assets/Images/profileImage.jpg')} />
+                        <Image source={require('../assets/Images/profileImage.jpg')}/>
                     </ProgressCircle>
                     <Text style={styles.avatarText}>Niveau {this.state.level}</Text>
                     <Text style={styles.avatarText}>{this.props.exp} %</Text>
@@ -112,13 +112,13 @@ const styles = StyleSheet.create({
         flex: 1,
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
-        backgroundColor:'black'
+        backgroundColor: 'black'
     },
     header: {
         marginTop: 25,
-        justifyContent:'flex-start',
-        width:100+'%',
-        height:50+"%",
+        justifyContent: 'flex-start',
+        width: 100 + '%',
+        height: 50 + "%",
     },
     title: {
         marginLeft: 15,
@@ -133,9 +133,9 @@ const styles = StyleSheet.create({
     },
     userInfos: {
         marginTop: 20,
-        width:250,
+        width: 250,
     },
-    avatar:{
+    avatar: {
         alignItems: 'center',
         position: 'absolute',
         bottom: '30%',
@@ -143,25 +143,25 @@ const styles = StyleSheet.create({
 
     },
     avatarText: {
-        color:'white',
+        color: 'white',
         fontSize: 24
     },
-    gamesContainer:{
-        width:60+'%',
+    gamesContainer: {
+        width: 60 + '%',
         flexDirection: 'row',
         marginLeft: 25,
-        justifyContent:'space-between',
+        justifyContent: 'space-between',
         marginTop: 120
     },
     gamesText: {
-        color:'#9F9F9F',
+        color: '#9F9F9F',
         textAlign: 'center'
     }
 });
 
 const mapStateToProps = (state) => {
     return {
-        exp: state.exp
+        state
     }
 };
-export default connect(mapStateToProps) (Profile)
+export default connect(mapStateToProps)(Profile)

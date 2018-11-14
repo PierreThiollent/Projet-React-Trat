@@ -1,13 +1,16 @@
 import React from 'react'
 import {Image, ImageBackground, StyleSheet, TouchableOpacity, View, ScrollView, Text} from 'react-native'
+import {connect} from 'react-redux';
 
-export default class SelectThemePremium extends React.Component {
+
+class SelectThemePremium extends React.Component {
+
     render() {
-        console.log(this.props);
         return (
             <ImageBackground style={styles.main_container}>
                 <View style={styles.head_container}>
-                    <Image source={require('../assets/Images/QTP.png')}/>
+                    <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Logo.png') : null}/>
+                    <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Logo.png') : null}/>
                     <TouchableOpacity
                         style={styles.burger}
                         onPress={() => this.props.navigation.openDrawer()}
@@ -22,7 +25,8 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("CulturegPremiumQuiz")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/CultureG.png')}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/CultureG.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/CultureG.png') : null}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Culture générale
@@ -32,7 +36,8 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Histoire.png')}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Histoire.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Histoire.png') : null}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Histoire
@@ -42,7 +47,8 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Langues.png')}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Langues.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Langues.png') : null}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Langues
@@ -54,7 +60,8 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Sport.png')}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Sport.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Sport.png') : null}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Sport
@@ -64,7 +71,8 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("SciencesPremiumQuiz")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Science.png')}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Science.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Science.png') : null}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Sciences
@@ -74,7 +82,8 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Arts.png')}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Arts.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Arts.png') : null}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Arts
@@ -86,7 +95,8 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Numérique.png')}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Numerique.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Numerique.png') : null}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Numérique
@@ -96,7 +106,8 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/TV.png')}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/TV.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/TV.png') : null}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Tv
@@ -106,7 +117,8 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Musique.png')}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Musique.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Musique.png') : null}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Musique
@@ -118,7 +130,8 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Animaux.png')}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Animaux.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Animaux.png') : null}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Animaux
@@ -128,7 +141,8 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/JeuxVideo.png')}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/JeuxVideo.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/JeuxVideo.png') : null}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Jeux
@@ -138,7 +152,8 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Nourriture.png')}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Nourriture.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Nourriture.png') : null}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Nourriture
@@ -150,7 +165,8 @@ export default class SelectThemePremium extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("")
                             }}>
-                                <Image source={require('../assets/Images/Theme/Premium/Sante.png')}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Sante.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Sante.png') : null}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
                                 Santé
@@ -169,8 +185,6 @@ export default class SelectThemePremium extends React.Component {
                         </TouchableOpacity>
                     </View>
                 </ScrollView>
-
-
             </ImageBackground>
         )
     }
@@ -207,3 +221,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
 });
+
+const mapStateToProps = (state) => {
+    return state
+};
+export default connect(mapStateToProps)(SelectThemePremium)

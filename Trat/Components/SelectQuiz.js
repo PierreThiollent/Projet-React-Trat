@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, ImageBackground, Text, TouchableOpacity, View, StyleSheet, Dimensions} from 'react-native';
-import connect from "react-redux/es/connect/connect";
+import {connect} from "react-redux";
 
 class SelectQuiz extends React.Component {
     constructor(props) {
@@ -23,21 +23,22 @@ class SelectQuiz extends React.Component {
         this.props.dispatch(action);
     }
 
-    _navigation() {
-        switch (this.state.type) {
-            case  "premium":
-                return this.props.navigation.navigate("SelectThemePremium");
-            case  "simple":
-                return this.props.navigation.navigate("SelectThemeSimple");
-            default: console.log("error");
-        }
+    _updateQuizSimple() {
+        const action = {type: "UPD_TYPE_SIMPLE", value: 'Simple'};
+        this.props.dispatch(action);
     }
-    
+
+    _updateQuizPremium() {
+        const action = {type: "UPD_TYPE_PREMIUM", value: 'Premium'};
+        this.props.dispatch(action);
+    }
+
+
     render() {
         console.log(this.props.updateQuizLength);
         console.log("Type de quiz : " +this.state.type, "/ Temps choisi : " +this.state.time);
         return (
-            <ImageBackground source={require('../assets/Images/SelecQuiz.png')} style={styles.container}>
+            <ImageBackground source={require('../assets/Images/SelectQuiz.png')} style={styles.container}>
                 <View
                     style={styles.burger}>
                     <TouchableOpacity
@@ -49,7 +50,9 @@ class SelectQuiz extends React.Component {
                 </View>
                 <View style={styles.icon}>
                     <View style={styles.topa}>
-                        <TouchableOpacity onPress={() => {this.setState({
+                        <TouchableOpacity onPress={() => {
+                            this._updateQuizPremium();
+                            this.setState({
                             type: "premium"
                         });
                         }}>
@@ -71,7 +74,9 @@ class SelectQuiz extends React.Component {
                         </Text>
                     </View>
                     <View style={styles.topa}>
-                        <TouchableOpacity onPress={() => {this.setState({
+                        <TouchableOpacity onPress={() => {
+                            this._updateQuizSimple();
+                            this.setState({
                             type: "simple"
                         });
                         }}>
@@ -112,7 +117,7 @@ class SelectQuiz extends React.Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.go}>
-                    <TouchableOpacity onPress={() => this._navigation()}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SelectThemePremium')}>
                         <Image source={require('../assets/Images/Go.png')}/>
                     </TouchableOpacity>
                 </View>
