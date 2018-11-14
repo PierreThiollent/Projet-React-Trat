@@ -3,6 +3,7 @@ import {Image, ImageBackground, StyleSheet, TouchableOpacity, View, ScrollView, 
 
 export default class SelectThemePremium extends React.Component {
     render() {
+        console.log(this.props);
         return (
             <ImageBackground style={styles.main_container}>
                 <View style={styles.head_container}>

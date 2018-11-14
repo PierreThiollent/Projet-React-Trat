@@ -45,7 +45,7 @@ const AppStackNavigation = createStackNavigator(
     },
 
     {
-        initialRouteName: 'SelectThemePremium',
+        initialRouteName: 'StartScreen',
         navigationOptions: {
             header: null,
             headerStyle: {

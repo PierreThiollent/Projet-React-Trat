@@ -75,7 +75,7 @@ export default class Login extends React.Component {
 
                     </View>
                     <Button
-                        raised
+                        raised={false}
                         rounded
                         rightIcon={{name: 'input'}}
                         title='Inscription'
@@ -83,7 +83,7 @@ export default class Login extends React.Component {
                         onPress={() => this.signUpUser(this.state.email, this.state.password)}
                     />
                     <Button
-                        raised
+                        raised={false}
                         rounded
                         rightIcon={{name: 'input'}}
                         title='Connexion'
@@ -122,4 +122,5 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         borderWidth: 1,
     },
+
 });

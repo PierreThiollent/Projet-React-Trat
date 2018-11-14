@@ -1,4 +1,10 @@
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 import updateExp from './Reducers/expReducers'
+import updateQuizLength from './Reducers/quizLengthReducer'
 
-export default createStore(updateExp)
+const rootReducer = combineReducers({
+    updateExp,
+    updateQuizLength
+});
+
+export default createStore(rootReducer)

@@ -1,13 +1,26 @@
 import React from 'react';
 import {Image, ImageBackground, Text, TouchableOpacity, View, StyleSheet, Dimensions} from 'react-native';
+import connect from "react-redux/es/connect/connect";
 
-export default class SelectQuiz extends React.Component {
+class SelectQuiz extends React.Component {
     constructor(props) {
         super(props);
         this.state = ({
             type: "",
             time: 0
         })
+    }
+    _updateQuizLength5() {
+                const action = {type: "UPD_LENGTH_5", value: 10};
+                this.props.dispatch(action);
+    }
+    _updateQuizLength10() {
+        const action = {type: "UPD_LENGTH_10", value: 20};
+        this.props.dispatch(action);
+    }
+    _updateQuizLength15() {
+        const action = {type: "UPD_LENGTH_15", value: 30};
+        this.props.dispatch(action);
     }
 
     _navigation() {
@@ -21,6 +34,7 @@ export default class SelectQuiz extends React.Component {
     }
     
     render() {
+        console.log(this.props.updateQuizLength);
         console.log("Type de quiz : " +this.state.type, "/ Temps choisi : " +this.state.time);
         return (
             <ImageBackground source={require('../assets/Images/SelecQuiz.png')} style={styles.container}>
@@ -70,6 +84,7 @@ export default class SelectQuiz extends React.Component {
                 </View>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity onPress={() => {
+                        this._updateQuizLength5();
                         this.setState({
                             time: 5,
                         });
@@ -78,6 +93,7 @@ export default class SelectQuiz extends React.Component {
                         <Text style={styles.buttonText}>5 minutes</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
+                        this._updateQuizLength10();
                         this.setState({
                             time: 10,
                         });
@@ -86,6 +102,7 @@ export default class SelectQuiz extends React.Component {
                         <Text style={styles.buttonText}>10 minutes</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
+                        this._updateQuizLength15();
                         this.setState({
                             time: 15,
                         });
@@ -159,3 +176,8 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     }
 });
+
+const mapStateToProps = (state) => {
+    return state
+};
+export default connect(mapStateToProps)(SelectQuiz)

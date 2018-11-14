@@ -1,17 +1,32 @@
 import React from 'react'
 import {Dimensions, Image, ImageBackground, Modal, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native'
 import CountdownCircle from 'react-native-countdown-circle';
-import {jsonCGData} from "../Data/CGQuizDataFacile";
+import {jsonCGData} from "../Data";
 import {connect} from 'react-redux'
 import shuffle from 'shuffle-array'
 
-const jsonData = shuffle.pick(jsonCGData.questions, { 'picks' : 20});
 
 class CulturegPremiumQuiz extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.jsonData = shuffle.pick(jsonCGData.questions, { 'picks' : this.props.updateQuizLength.quizLength });
+        this.state = ({
+            count: 0,
+            score: 0,
+            qn: false,
+            disable: false,
+            enable: false,
+            visible: false,
+            response: false,
+            timer: 30,
+        })
+    }
+
+
     _Next = () => {
         this._scoring();
-        if (this.state.count === jsonData.length - 1) {
+        if (this.state.count === this.jsonData.length - 1) {
             this.setState({
                 enable: true
             })
@@ -43,19 +58,6 @@ class CulturegPremiumQuiz extends React.Component {
         }
     };
 
-    constructor(props) {
-        super(props)
-        this.state = ({
-            count: 0,
-            score: 0,
-            qn: false,
-            disable: false,
-            enable: false,
-            visible: false,
-            response: false,
-            timer: 30,
-        })
-    }
 
     updateExp() {
         const action = {type: "UPD_EXP", value: +10};
@@ -63,6 +65,8 @@ class CulturegPremiumQuiz extends React.Component {
     }
 
     render() {
+        console.log(this.props);
+        console.log(this.props.updateQuizLength.quizLength);
         return (
             <ImageBackground style={styles.main_container}>
                 <View style={styles.timer}>
@@ -83,12 +87,12 @@ class CulturegPremiumQuiz extends React.Component {
                 <View style={styles.head_container}>
                     <Image source={require('../assets/Images/QTP.png')}/>
                 </View>
-                <View style={styles.pic}>{jsonData[this.state.count].images}</View>
+                <View style={styles.pic}>{this.jsonData[this.state.count].images}</View>
                 <View style={styles.quiz}>
-                    <Text style={styles.questions}>{jsonData[this.state.count].title}</Text>
+                    <Text style={styles.questions}>{this.jsonData[this.state.count].title}</Text>
                     <View style={styles.q_container}>
                         {
-                            jsonData[this.state.count].answer.map((el) => {
+                            this.jsonData[this.state.count].answer.map((el) => {
                                 return (<TouchableHighlight disabled={this.state.disable}
                                                             style={[styles.answerButton, {backgroundColor: (el.res === true && this.state.response === true) ? "#006400" : "white"}]}
                                                             onPress={() => {
@@ -140,7 +144,7 @@ class CulturegPremiumQuiz extends React.Component {
                                     this.props.navigation.navigate("HomeScreen");
                                     this.setState({enable: false})
                                 }}>
-                                <Text style={{textAlign: 'center',}}>{"Score: " + this.state.score + " / " + jsonData.length}</Text>
+                                <Text style={{textAlign: 'center',}}>{"Score: " + this.state.score + " / " + this.jsonData.length}</Text>
                             </TouchableOpacity>
                             <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>+ {this.props.exp} XP</Text>
                         </View>
@@ -244,8 +248,6 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-    return {
-        exp: state.exp
-    }
+    return state
 };
 export default connect(mapStateToProps)(CulturegPremiumQuiz)

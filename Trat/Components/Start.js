@@ -32,24 +32,18 @@ export default class Start extends React.Component {
                 console.log(user);
             }
             else {
-                console.log(error.Message);
+                console.log("lolilol");
             }
 
         });
 
     };
 
-    constructor(props) {
-        super(props);
-        this.state = ({
-            newToken: false,
-        })
-    }
 
     componentDidMount() {
         this.animation.play();
         firebase.auth().onAuthStateChanged((user) => {
-            if (user != null && this.state.newToken === true) {
+            if (user ) {
                 console.log(user);
                 this.props.navigation.navigate('HomeScreen');
             }
