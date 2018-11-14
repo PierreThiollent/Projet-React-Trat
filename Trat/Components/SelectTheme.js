@@ -1,11 +1,16 @@
 import React from 'react'
 import {Image, ImageBackground, StyleSheet, TouchableOpacity, View, ScrollView, Text} from 'react-native'
 import {connect} from 'react-redux';
+import {jsonCGData} from "../Data/CGQuizDataFacile";
+import {jsonScienceData} from "../Data/ScienceQuizDataFacile";
 
 
-class SelectThemePremium extends React.Component {
+class SelectTheme extends React.Component {
 
     render() {
+        console.log(this.props.selectTheme.theme);
+        console.log(this.props.updateQuizLength.quizLength);
+        console.log(this.props.updateQuizType.quizType);
         return (
             <ImageBackground style={styles.main_container}>
                 <View style={styles.head_container}>
@@ -23,7 +28,9 @@ class SelectThemePremium extends React.Component {
                     <View style={styles.icon}>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate("CulturegPremiumQuiz")
+                                this.props.navigation.navigate("QuizVue");
+                                const action = {type: "SELECT_THEME_CG", value: jsonCGData.questions};
+                                this.props.dispatch(action);
                             }}>
                                 <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/CultureG.png') : null}/>
                                 <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/CultureG.png') : null}/>
@@ -69,7 +76,9 @@ class SelectThemePremium extends React.Component {
                         </View>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate("SciencesPremiumQuiz")
+                                this.props.navigation.navigate("QuizVue");
+                                const action = {type: "SELECT_THEME_SCIENCE", value: jsonScienceData.questions};
+                                this.props.dispatch(action);
                             }}>
                                 <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Science.png') : null}/>
                                 <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Science.png') : null}/>
@@ -225,4 +234,4 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     return state
 };
-export default connect(mapStateToProps)(SelectThemePremium)
+export default connect(mapStateToProps)(SelectTheme)

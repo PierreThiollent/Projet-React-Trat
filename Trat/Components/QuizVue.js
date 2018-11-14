@@ -6,11 +6,11 @@ import {connect} from 'react-redux'
 import shuffle from 'shuffle-array'
 
 
-class CulturegPremiumQuiz extends React.Component {
+class QuizVue extends React.Component {
 
     constructor(props) {
         super(props);
-        this.jsonData = shuffle.pick(jsonCGData.questions, { 'picks' : this.props.updateQuizLength.quizLength });
+        this.jsonData = shuffle.pick(this.props.selectTheme.theme, { 'picks' : this.props.updateQuizLength.quizLength });
         this.state = ({
             count: 0,
             score: 0,
@@ -65,7 +65,6 @@ class CulturegPremiumQuiz extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         console.log(this.props.updateQuizLength.quizLength);
         return (
             <ImageBackground style={styles.main_container}>
@@ -74,7 +73,7 @@ class CulturegPremiumQuiz extends React.Component {
                         seconds={this.state.timer}
                         radius={30}
                         borderWidth={4}
-                        color="#FCB045"
+                        color='#FC6B32'
                         bgColor="#fff"
                         textStyle={{fontSize: 20}}
                         onTimeElapsed={() => this.setState({
@@ -84,7 +83,8 @@ class CulturegPremiumQuiz extends React.Component {
                     />
                 </View>
                 <View style={styles.head_container}>
-                    <Image source={require('../assets/Images/Theme/Premium/Logo.png')}/>
+                    <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/LogoQuiz.png') : null}/>
+                    <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/LogoQuiz.png') : null}/>
                 </View>
                 <View style={styles.pic}>{this.jsonData[this.state.count].images}</View>
                 <View style={styles.quiz}>
@@ -93,7 +93,9 @@ class CulturegPremiumQuiz extends React.Component {
                         {
                             this.jsonData[this.state.count].answer.map((el) => {
                                 return (<TouchableHighlight disabled={this.state.disable}
-                                                            style={[styles.answerButton, {backgroundColor: (el.res === true && this.state.response === true) ? "#006400" : "white"}]}
+                                                            style={[styles.answerButton, {backgroundColor: (el.res === true && this.state.response === true) ? "#006400" : "white"},
+                                                                {borderColor: (this.props.updateQuizType.quizType === "Premium") ? "#FCB045" : "#9E005D" },
+                                                                {borderColor: (this.props.updateQuizType.quizType === "Simple") ? "#9E005D" : "#FCB045" }]}
                                                             onPress={() => {
                                                                 this.setState({
                                                                     qn: el.res,
@@ -128,6 +130,8 @@ class CulturegPremiumQuiz extends React.Component {
                 </Modal>
                 <Modal animationType="slide"
                        visible={this.state.enable}
+                       onRequestClose={() => {const action = {type: "SELECT_THEME_END", value: []};
+                                                this.props.dispatch(action);}}
                        onPress={() => {
                            this.props.navigation.navigate("HomeScreen");
                            this.setState({
@@ -145,7 +149,7 @@ class CulturegPremiumQuiz extends React.Component {
                                 }}>
                                 <Text style={{textAlign: 'center',}}>{"Score: " + this.state.score + " / " + this.jsonData.length}</Text>
                             </TouchableOpacity>
-                            <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>+ {this.props.exp} XP</Text>
+                            <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>+ {this.props.updateExp.exp} XP</Text>
                         </View>
                     </ImageBackground>
                 </Modal>
@@ -204,7 +208,6 @@ const styles = StyleSheet.create({
         marginTop: 20,
         borderRadius: 50,
         borderWidth: 2,
-        borderColor: '#FCB045',
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
@@ -249,4 +252,4 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     return state
 };
-export default connect(mapStateToProps)(CulturegPremiumQuiz)
+export default connect(mapStateToProps)(QuizVue)

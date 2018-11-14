@@ -1,24 +1,26 @@
-const initialState = {quizType: ""};
+import {jsonCGData} from "../../Data/CGQuizDataFacile";
 
-function updateQuizType(state = initialState, action) {
+const initialState = {theme: []};
+
+function selectTheme(state = initialState, action) {
     let nextState;
     switch(action.type) {
-        case 'UPD_TYPE_PREMIUM':
+        case 'SELECT_THEME_CG':
             nextState = {
                 ...state,
-                quizType:   action.value,
+                theme:   action.value,
             };
             return nextState || state;
-        case 'UPD_TYPE_SIMPLE':
+        case 'SELECT_THEME_SCIENCE':
             nextState = {
                 ...state,
-                quizType:  action.value,
+                theme:  action.value,
             };
             return nextState || state;
-        case 'UPD_TYPE_GEOLOC':
+        case 'SELECT_THEME_END':
             nextState = {
                 ...state,
-                quizType:  action.value,
+                theme:  action.value,
             };
             return nextState || state;
         default:
@@ -26,4 +28,4 @@ function updateQuizType(state = initialState, action) {
     }
 }
 
-export default updateQuizType
+export default selectTheme

@@ -4,11 +4,11 @@ import Login from '../Components/Login'
 import Home from '../Components/Home'
 import SelectQuiz from "../Components/SelectQuiz";
 import DrawerMenu from "../Components/DrawerMenu";
-import SelectThemePremium from "../Components/SelectThemePremium";
-import CulturegPremiumQuiz from "../Components/CulturegPremiumQuiz";
+import QuizVue from "../Components/QuizVue";
 import Stats from "../Components/Stats";
 import Profile from "../Components/Profile";
-import SelectThemeSimple from "../Components/SelectThemeSimple";
+import SelectTheme from "../Components/SelectTheme";
+
 
 
 const AppStackNavigation = createStackNavigator(
@@ -27,15 +27,11 @@ const AppStackNavigation = createStackNavigator(
             screen: SelectQuiz
         },
 
-        SelectThemePremium: {
-            screen: SelectThemePremium
+        SelectTheme: {
+            screen: SelectTheme
         },
-        SelectThemeSimple: {
-            screen: SelectThemeSimple,
-        },
-
-        CulturegPremiumQuiz: {
-            screen: CulturegPremiumQuiz
+        QuizVue: {
+            screen: QuizVue
         },
         StatsScreen: {
             screen: Stats
@@ -45,7 +41,7 @@ const AppStackNavigation = createStackNavigator(
         },
     },
     {
-        initialRouteName: 'StartScreen',
+        initialRouteName: 'SelectQuiz',
         navigationOptions: {
             header: null,
             headerStyle: {

@@ -33,10 +33,28 @@ class SelectQuiz extends React.Component {
         this.props.dispatch(action);
     }
 
+    _updateQuizGeoloc() {
+        const action = {type: "UPD_TYPE_GEOLOC", value: 'Geoloc'};
+        this.props.dispatch(action);
+    }
+
+    _goToTheme = () => {
+      if ( this.props.updateQuizType.quizType === "" || this.props.updateQuizLength.quizLength === 0) {
+          alert("Veuillez selectionner un type de quiz et une durée.");
+      }
+      else if  (this.props.updateQuizType.quizType === "Geoloc") {
+          alert("Ce quiz n'est pas encore disponible.");
+      }
+      else {
+          this.props.navigation.navigate("SelectTheme");
+      }
+    };
+
 
     render() {
-        console.log(this.props.updateQuizLength);
-        console.log("Type de quiz : " +this.state.type, "/ Temps choisi : " +this.state.time);
+        console.log(this.props.selectTheme.theme);
+        console.log(this.props.updateQuizLength.quizLength);
+        console.log(this.props.updateQuizType.quizType);
         return (
             <ImageBackground source={require('../assets/Images/SelectQuiz.png')} style={styles.container}>
                 <View
@@ -63,7 +81,9 @@ class SelectQuiz extends React.Component {
                         </Text>
                     </View>
                     <View style={styles.topa}>
-                        <TouchableOpacity onPress={() => {this.setState({
+                        <TouchableOpacity onPress={() => {
+                            this._updateQuizGeoloc();
+                            this.setState({
                             type: "geoloc"
                         });
                         }}>
@@ -117,7 +137,7 @@ class SelectQuiz extends React.Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.go}>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SelectThemePremium')}>
+                    <TouchableOpacity onPress={() => this._goToTheme()}>
                         <Image source={require('../assets/Images/Go.png')}/>
                     </TouchableOpacity>
                 </View>
