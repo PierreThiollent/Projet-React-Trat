@@ -23,6 +23,18 @@ class QuizVue extends React.Component {
         })
     }
 
+    _upExpMax() {
+        const action = {type: "UPD_EXP_MAX", value: 2};
+        this.props.dispatch(action);
+    }
+    _nextLevel() {
+        const action = {type: "LEVEL_UP", value: +1};
+        this.props.dispatch(action);
+    }
+    _resetExp() {
+        const action = {type: "RESET_EXP", value: 0};
+        this.props.dispatch(action);
+    }
 
     _Next = () => {
         this._scoring();
@@ -62,10 +74,25 @@ class QuizVue extends React.Component {
     updateExp() {
         const action = {type: "UPD_EXP", value: +10};
         this.props.dispatch(action)
-    }
+    };
+
+    _levelUp = () => {
+        if (this.props.updateExp.exp === this.props.updateExpMax.expMax || this.props.updateExp.exp > this.props.updateExpMax.expMax) {
+            this._nextLevel();
+            this._upExpMax();
+            this._resetExp();
+
+        }
+        else {
+            console.log("mon console.log")
+        }
+    };
+
+
+
 
     render() {
-        console.log(this.props.updateQuizLength.quizLength);
+        console.log(this.props.updateExp.exp + "/" + this.props.updateExpMax.expMax + " et lvl " + this.props.levelUp.lvl);
         return (
             <ImageBackground style={styles.main_container}>
                 <View style={styles.timer}>
@@ -87,8 +114,8 @@ class QuizVue extends React.Component {
                     <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/LogoQuiz.png') : null}/>
                 </View>
                 <View style={styles.pic}>{this.jsonData[this.state.count].images}</View>
+                <View style={styles.container}><Text style={styles.questions}>{this.jsonData[this.state.count].title}</Text></View>
                 <View style={styles.quiz}>
-                    <Text style={styles.questions}>{this.jsonData[this.state.count].title}</Text>
                     <View style={styles.q_container}>
                         {
                             this.jsonData[this.state.count].answer.map((el) => {
@@ -104,9 +131,10 @@ class QuizVue extends React.Component {
                                                                     visible: true,
                                                                     timer: 1,
                                                                 });
+                                                                this._levelUp();
                                                             }}
                                                             underlayColor={"white"}>
-                                    <Text>{el.nom}</Text>
+                                    <Text style={{textAlign: 'center'}}>{el.nom}</Text>
 
                                 </TouchableHighlight>)
                             })
@@ -117,6 +145,9 @@ class QuizVue extends React.Component {
                        animationType="slide"
                        transparent={true}
                        visible={this.state.visible}
+                       onRequestClose={() => {
+
+                       }}
                 >
                     <TouchableOpacity style={styles.modal}
                                       onPress={() => {
@@ -124,14 +155,16 @@ class QuizVue extends React.Component {
                                           this.setState({
                                               visible: false,
                                               timer: 30
-                                          })
+                                          });
                                       }}>
                     </TouchableOpacity>
                 </Modal>
                 <Modal animationType="slide"
                        visible={this.state.enable}
-                       onRequestClose={() => {const action = {type: "SELECT_THEME_END", value: []};
-                                                this.props.dispatch(action);}}
+                       onRequestClose={() => {
+
+                       }}
+
                        onPress={() => {
                            this.props.navigation.navigate("HomeScreen");
                            this.setState({
@@ -144,6 +177,7 @@ class QuizVue extends React.Component {
                             <TouchableOpacity
                                 style={styles.button}
                                 onPress={() => {
+                                    this._levelUp();
                                     this.props.navigation.navigate("HomeScreen");
                                     this.setState({enable: false})
                                 }}>
@@ -192,25 +226,30 @@ const styles = StyleSheet.create({
         marginBottom: 40,
 
     },
-    questions: {
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center',
         textAlign: 'center',
-        width: 300,
-        height: 100,
+        marginBottom: 40,
+
+    },
+    questions: {
         borderRadius: 5,
         color: 'white',
         fontSize: 25,
-        justifyContent: 'center',
+        textAlign: 'center',
+        marginBottom: 10
 
     },
     answerButton: {
-        width: 150,
-        height: 50,
+        width: 160,
+        height: 55,
         marginTop: 20,
         borderRadius: 50,
         borderWidth: 2,
         backgroundColor: 'white',
         justifyContent: 'center',
-        alignItems: 'center',
+        textAlign: 'center',
     },
     next: {
         marginTop: 20,

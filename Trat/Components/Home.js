@@ -1,7 +1,23 @@
 import React from 'react';
 import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import connect from "react-redux/es/connect/connect";
 
-export default class Home extends React.Component {
+class Home extends React.Component {
+
+    _resetQuizLength() {
+        const action = {type: "UPD_LENGTH_RESET", value: 0};
+        this.props.dispatch(action);
+    }
+    _resetQuizType() {
+        const action = {type: "UPD_TYPE_RESET", value: ""};
+        this.props.dispatch(action);
+    }
+    _resetQuizTheme() {
+        const action = {type: "SELECT_THEME_RESET", value: []};
+        this.props.dispatch(action);
+    }
+
+
     render() {
         return (
             <ImageBackground source={require('../assets/Images/Home.png')} style={styles.container}>
@@ -17,7 +33,11 @@ export default class Home extends React.Component {
                     </Text>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SelectQuiz')}
+                    <TouchableOpacity onPress={() => {
+                        this._resetQuizLength();
+                        this._resetQuizTheme();
+                        this._resetQuizType();
+                        this.props.navigation.navigate('SelectQuiz')}}
                                       style={[styles.button, {alignItems: 'flex-end', marginRight: 35}]}>
                         <Text style={[styles.buttonText, {marginRight: 15}]}>QUIZ</Text>
                     </TouchableOpacity>
@@ -76,3 +96,8 @@ const styles = StyleSheet.create({
 
     }
 });
+
+const mapStateToProps = (state) => {
+    return state
+};
+export default connect(mapStateToProps)(Home)
