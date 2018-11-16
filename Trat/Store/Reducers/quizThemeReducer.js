@@ -1,26 +1,24 @@
-import {jsonCGData} from "../../Data/CGQuizDataFacile";
-
 const initialState = {theme: []};
 
 function selectTheme(state = initialState, action) {
     let nextState;
-    switch(action.type) {
+    switch (action.type) {
         case 'SELECT_THEME_CG':
             nextState = {
                 ...state,
-                theme:   action.value,
+                theme: action.value,
             };
             return nextState || state;
         case 'SELECT_THEME_SCIENCE':
             nextState = {
                 ...state,
-                theme:  action.value,
+                theme: action.value,
             };
             return nextState || state;
         case 'SELECT_THEME_RESET':
             nextState = {
                 ...state,
-                theme:  action.value,
+                theme: action.value,
             };
             return nextState || state;
         default:

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
+import {Dimensions, StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 
 export default class Boutique extends React.Component {
     render() {

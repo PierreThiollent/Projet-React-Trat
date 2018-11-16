@@ -1,44 +1,27 @@
 import React from 'react'
-import {Dimensions, Image, ImageBackground, Modal, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native'
+import {
+    Dimensions,
+    Image,
+    ImageBackground,
+    Modal,
+    StyleSheet,
+    Text,
+    TouchableHighlight,
+    TouchableOpacity,
+    View
+} from 'react-native'
 import CountdownCircle from 'react-native-countdown-circle';
 import {connect} from 'react-redux'
 import shuffle from 'shuffle-array'
+import {jsonScienceData} from "../Data/ScienceQuizDataFacile";
+import {jsonCGData} from "../Data/CGQuizDataFacile";
 
 
 class QuizVue extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.jsonData = shuffle.pick(this.props.selectTheme.theme, { 'picks' : this.props.updateQuizLength.quizLength });
-        this.state = ({
-            count: 0,
-            score: 0,
-            qn: false,
-            disable: false,
-            enable: false,
-            visible: false,
-            response: false,
-            timer: 30,
-            xp: 0
-        })
-    }
-
-    _upExpMax() {
-        const action = {type: "UPD_EXP_MAX", value: 2};
-        this.props.dispatch(action);
-    }
-    _nextLevel() {
-        const action = {type: "LEVEL_UP", value: +1};
-        this.props.dispatch(action);
-    }
-    _resetExp() {
-        const action = {type: "RESET_EXP", value: 0};
-        this.props.dispatch(action);
-    }
-
     _Next = () => {
         this._scoring();
-        if (this.state.count === this.jsonData.length - 1) {
+        if (this.state.count === this.jsonDataQuestion.length - 1) {
             this.setState({
                 enable: true
             })
@@ -70,13 +53,6 @@ class QuizVue extends React.Component {
             return (null);
         }
     };
-
-
-    updateExp() {
-        const action = {type: "UPD_EXP", value: +10};
-        this.props.dispatch(action)
-    };
-
     _levelUp = () => {
         if (this.props.updateExp.exp === this.props.updateExpMax.expMax || this.props.updateExp.exp > this.props.updateExpMax.expMax) {
             this._nextLevel();
@@ -89,9 +65,43 @@ class QuizVue extends React.Component {
         }
     };
 
+    constructor(props) {
+        super(props);
+        this.jsonDataQuestion = shuffle.pick(this.props.selectTheme.theme.questions, {'picks': this.props.updateQuizLength.quizLength});
+        this.state = ({
+            count: 0,
+            score: 0,
+            qn: false,
+            disable: false,
+            enable: false,
+            visible: false,
+            response: false,
+            timer: 30,
+            xp: 0
+        })
+    }
+
+    _upExpMax() {
+        const action = {type: "UPD_EXP_MAX", value: 2};
+        this.props.dispatch(action);
+    }
+
+    _nextLevel() {
+        const action = {type: "LEVEL_UP", value: +1};
+        this.props.dispatch(action);
+    }
+
+    _resetExp() {
+        const action = {type: "RESET_EXP", value: 0};
+        this.props.dispatch(action);
+    }
+
+    updateExp() {
+        const action = {type: "UPD_EXP", value: +10};
+        this.props.dispatch(action)
+    };
 
     render() {
-        console.log(this.props.updateQuizLength.quizLength);
         return (
             <ImageBackground style={styles.main_container}>
                 <View style={styles.timer}>
@@ -109,36 +119,36 @@ class QuizVue extends React.Component {
                     />
                 </View>
                 <View style={styles.head_container}>
-                    <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/LogoQuiz.png') : null}/>
-                    <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/LogoQuiz.png') : null}/>
+                    <Image
+                        source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/LogoQuiz.png') : null}/>
+                    <Image
+                        source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/LogoQuiz.png') : null}/>
                 </View>
-                <View style={styles.pic}>{this.jsonData[this.state.count].images}</View>
-                <View style={styles.container}><Text style={styles.questions}>{this.jsonData[this.state.count].title}</Text></View>
+                <View style={styles.pic}>{this.jsonDataQuestion[this.state.count].images}</View>
+                <View style={styles.container}><Text
+                    style={styles.questions}>{this.jsonDataQuestion[this.state.count].title}</Text></View>
                 <View style={styles.quiz}>
                     <View style={styles.q_container}>
-                        {
-                            this.jsonData[this.state.count].answer.map((el) => {
-                                return (<TouchableHighlight disabled={this.state.disable}
-                                                            style={[styles.answerButton, {backgroundColor: (el.res === true && this.state.response === true) ? "#006400" : "white"},
-                                                                {borderColor: (this.props.updateQuizType.quizType === "Premium") ? "#FCB045" : "#9E005D" },
-                                                                {borderColor: (this.props.updateQuizType.quizType === "Simple") ? "#9E005D" : "#FCB045" }]}
-                                                            onPress={() => {
-                                                                this.setState({
-                                                                    qn: el.res,
-                                                                    response: true,
-                                                                    disable: true,
-                                                                    visible: true,
-                                                                    timer: 1,
-                                                                });
-                                                                this._levelUp();
-                                                            }}
-                                                            underlayColor={"white"}>
-                                    <Text allowFontScaling={true}
-                                          style={{textAlign: 'center', margin: 5}}>{el.nom}</Text>
-
+                        {this.jsonDataQuestion[this.state.count].map((el) => {
+                            return (
+                                <TouchableHighlight disabled={this.state.disable}
+                                                    style={[styles.answerButton, {backgroundColor: (el.res === true && this.state.response === true) ? "#006400" : "white"},
+                                                        {borderColor: (this.props.updateQuizType.quizType === "Premium") ? "#FCB045" : "#9E005D"},
+                                                        {borderColor: (this.props.updateQuizType.quizType === "Simple") ? "#9E005D" : "#FCB045"}]}
+                                                    onPress={() => {
+                                                        this.setState({
+                                                            qn: el.res,
+                                                            response: true,
+                                                            disable: true,
+                                                            visible: true,
+                                                            timer: 1,
+                                                        });
+                                                        this._levelUp();
+                                                    }}
+                                                    underlayColor={"white"}>
+                                    <Text style={{textAlign: 'center'}}>{el.nom}</Text>
                                 </TouchableHighlight>)
-                            })
-                        }
+                        })}
                     </View>
                 </View>
                 <Modal style={styles.modal}
@@ -173,7 +183,17 @@ class QuizVue extends React.Component {
                        }}>
                     <ImageBackground source={require('../assets/Images/Result.png')} style={styles.result}>
                         <View style={styles.buttonContainer}>
-                            <Text style={{color: '#fff', fontSize: 40, marginBottom: 20}}>Le Quiz est terminé</Text>
+                            <View style={{marginBottom: 30}}>
+                                <Image
+                                    source={(this.props.updateQuizType.quizType === "Premium" && this.props.selectTheme.theme === jsonCGData) ? require('../assets/Images/Theme/Premium/CultureG.png') : null}/>
+                                <Image
+                                    source={(this.props.updateQuizType.quizType === "Premium" && this.props.selectTheme.theme === jsonScienceData) ? require('../assets/Images/Theme/Premium/Science.png') : null}/>
+                                <Image
+                                    source={(this.props.updateQuizType.quizType === "Simple" && this.props.selectTheme.theme === jsonCGData) ? require('../assets/Images/Theme/Simple/CultureG.png') : null}/>
+                                <Image
+                                    source={(this.props.updateQuizType.quizType === "Simple" && this.props.selectTheme.theme === jsonScienceData) ? require('../assets/Images/Theme/Simple/Science.png') : null}/>
+                            </View>
+                            <Text style={{color: '#fff', fontSize: 40, marginBottom: 20}}>Quiz terminé !</Text>
                             <TouchableOpacity
                                 style={styles.button}
                                 onPress={() => {
@@ -181,7 +201,8 @@ class QuizVue extends React.Component {
                                     this.props.navigation.navigate("HomeScreen");
                                     this.setState({enable: false})
                                 }}>
-                                <Text style={{textAlign: 'center',}}>{"Score: " + this.state.score + " / " + this.jsonData.length}</Text>
+                                <Text
+                                    style={{textAlign: 'center',}}>{"Score: " + this.state.score + " / " + this.jsonDataQuestion.length}</Text>
                             </TouchableOpacity>
                             <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>+ {this.state.xp} XP</Text>
                         </View>

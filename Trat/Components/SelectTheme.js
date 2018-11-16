@@ -8,9 +8,6 @@ import {jsonScienceData} from "../Data/ScienceQuizDataFacile";
 class SelectTheme extends React.Component {
 
     render() {
-        console.log(this.props.selectTheme.theme);
-        console.log(this.props.updateQuizLength.quizLength);
-        console.log(this.props.updateQuizType.quizType);
         return (
             <ImageBackground style={styles.main_container}>
                 <View style={styles.head_container}>
@@ -29,7 +26,7 @@ class SelectTheme extends React.Component {
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("QuizVue");
-                                const action = {type: "SELECT_THEME_CG", value: jsonCGData.questions};
+                                const action = {type: "SELECT_THEME_CG", value: jsonCGData};
                                 this.props.dispatch(action);
                             }}>
                                 <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/CultureG.png') : null}/>
@@ -77,7 +74,7 @@ class SelectTheme extends React.Component {
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate("QuizVue");
-                                const action = {type: "SELECT_THEME_SCIENCE", value: jsonScienceData.questions};
+                                const action = {type: "SELECT_THEME_SCIENCE", value: jsonScienceData};
                                 this.props.dispatch(action);
                             }}>
                                 <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Science.png') : null}/>
