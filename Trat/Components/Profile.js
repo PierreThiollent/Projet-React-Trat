@@ -5,54 +5,17 @@ import {connect} from 'react-redux'
 
 class Profile extends React.Component {
 
-
-    _percentage = () => {
-        this.setState({
-            score: this.state.score + 1,
-        });
-        if (this.state.percent >= 100) {
-            this.setState({
-                    percent: 0,
-                    level: this.state.level + 1,
-                }
-            );
-        }
-        else {
-            if (this.state.score < 10) {
-                this.setState({
-                        percent: this.state.percent + 10,
-                    }
-                );
-                console.log(this.state.percent);
-            }
-            else if (this.state.score >= 10 && this.state.score < 28) {
-                this.setState({
-                        percent: this.state.percent + 6.5,
-                    }
-                );
-            }
-            else {
-                this.setState({
-                    score: 0,
-                    percent: 0,
-                })
-            }
-
-        }
-
-    };
-
     constructor(props) {
         super(props);
         this.state = ({
             score: 0,
             level: 0,
-            percent: 0,
         })
     }
 
+
     render() {
-        console.log(this.props.name);
+        console.log(this.props);
         return (
             <ImageBackground source={require('../assets/Images/Profile.png')} style={styles.container}>
                 <View style={styles.burger}>
@@ -67,13 +30,13 @@ class Profile extends React.Component {
                     <Text style={styles.title}>PROFIL</Text>
 
                     <View style={styles.userInfos}>
-                        <Text style={styles.title}>{this.props.name}</Text>
+                        <Text style={styles.title}>BEBER Benben</Text>
                         <Text style={{fontSize: 17, color: 'white', marginLeft: 15}}>Etudiant en Web Design</Text>
                     </View>
                 </View>
                 <View style={styles.avatar}>
                     <ProgressCircle
-                        percent={this.state.percent}
+                        percent={(this.props.updateExp.exp * 100) / this.props.updateExpMax.expMax}
                         radius={90}
                         borderWidth={8}
                         color="#000"
@@ -82,8 +45,8 @@ class Profile extends React.Component {
                     >
                         <Image source={require('../assets/Images/profileImage.jpg')}/>
                     </ProgressCircle>
-                    <Text style={styles.avatarText}>Niveau {this.state.level}</Text>
-                    <Text style={styles.avatarText}>{this.props.updateExp.exp} %</Text>
+                    <Text style={styles.avatarText}>Niveau {this.props.levelUp.lvl}</Text>
+                    <Text style={styles.avatarText}>{this.props.updateExp.exp} / {this.props.updateExpMax.expMax}</Text>
                 </View>
                 <View style={styles.gamesContainer}>
                     <TouchableOpacity>
@@ -96,7 +59,7 @@ class Profile extends React.Component {
                         <Text style={[styles.gamesText, {marginTop: 10}]}>Musique</Text>
                         <Text style={styles.gamesText}>Niveau 5</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this._percentage()}>
+                    <TouchableOpacity>
                         <Image source={require('../assets/Images/GameFood.png')}/>
                         <Text style={[styles.gamesText, {marginTop: 10}]}>Nourriture</Text>
                         <Text style={styles.gamesText}>Niveau 5</Text>
@@ -160,8 +123,6 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-    return {
-        state
-    }
+    return state
 };
 export default connect(mapStateToProps)(Profile)

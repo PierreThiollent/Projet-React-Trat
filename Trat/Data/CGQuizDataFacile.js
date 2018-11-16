@@ -157,7 +157,7 @@ export const jsonCGData = {
         },
         {
             images: <Image source={require('./assetsData/CultureG/Facile/cut/QCG16.png')}/>,
-            title: "Quel pays le mouvement des Talibans a-t-il gouverné de 1996 à 2001 ?Quel groupe de musique est composé de deux DJ portant des casques de robot ?",
+            title: "Quel groupe de musique est composé de deux DJ portant des casques de robot ?",
             answer: [
                 {nom: "Daft Punk", res: true},
                 {nom: "The Chemical Brothers", res: false},

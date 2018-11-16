@@ -9,6 +9,12 @@ function updateExp(state = initialState, action) {
                 exp: state.exp + action.value,
             };
             return nextState || state;
+        case 'RESET_EXP':
+            nextState = {
+                ...state,
+                exp: action.value,
+            };
+            return nextState || state;
         default:
             return state
     }

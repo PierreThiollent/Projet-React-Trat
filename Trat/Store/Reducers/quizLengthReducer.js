@@ -21,6 +21,12 @@ function updateQuizLength(state = initialState, action) {
                 quizLength:  action.value,
             };
             return nextState || state;
+        case 'UPD_LENGTH_RESET':
+            nextState = {
+                ...state,
+                quizLength:  action.value,
+            };
+            return nextState || state;
 
         default:
             return state

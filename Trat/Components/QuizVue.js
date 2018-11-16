@@ -1,6 +1,7 @@
 import React from 'react'
 import {Dimensions, Image, ImageBackground, Modal, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native'
 import CountdownCircle from 'react-native-countdown-circle';
+import {jsonCGData} from "../Data/CGQuizDataFacile";
 import {connect} from 'react-redux'
 import shuffle from 'shuffle-array'
 
@@ -9,7 +10,7 @@ class QuizVue extends React.Component {
 
     constructor(props) {
         super(props);
-        this.jsonData = shuffle.pick(this.props.selectTheme.theme, {'picks': this.props.updateQuizLength.quizLength});
+        this.jsonData = shuffle.pick(this.props.selectTheme.theme, { 'picks' : this.props.updateQuizLength.quizLength });
         this.state = ({
             count: 0,
             score: 0,
@@ -20,6 +21,19 @@ class QuizVue extends React.Component {
             response: false,
             timer: 30,
         })
+    }
+
+    _upExpMax() {
+        const action = {type: "UPD_EXP_MAX", value: 2};
+        this.props.dispatch(action);
+    }
+    _nextLevel() {
+        const action = {type: "LEVEL_UP", value: +1};
+        this.props.dispatch(action);
+    }
+    _resetExp() {
+        const action = {type: "RESET_EXP", value: 0};
+        this.props.dispatch(action);
     }
 
     _Next = () => {
@@ -56,10 +70,26 @@ class QuizVue extends React.Component {
         }
     };
 
+
     updateExp() {
         const action = {type: "UPD_EXP", value: +10};
         this.props.dispatch(action)
-    }
+    };
+
+    _levelUp = () => {
+        if (this.props.updateExp.exp === this.props.updateExpMax.expMax || this.props.updateExp.exp > this.props.updateExpMax.expMax) {
+            this._nextLevel();
+            this._upExpMax();
+            this._resetExp();
+
+        }
+        else {
+            console.log("mon console.log")
+        }
+    };
+
+
+
 
     render() {
         console.log(this.props.updateQuizLength.quizLength);
@@ -80,10 +110,8 @@ class QuizVue extends React.Component {
                     />
                 </View>
                 <View style={styles.head_container}>
-                    <Image
-                        source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/LogoQuiz.png') : null}/>
-                    <Image
-                        source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/LogoQuiz.png') : null}/>
+                    <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/LogoQuiz.png') : null}/>
+                    <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/LogoQuiz.png') : null}/>
                 </View>
                 <View style={styles.pic}>{this.jsonData[this.state.count].images}</View>
                 <View style={styles.quiz}>
@@ -93,8 +121,8 @@ class QuizVue extends React.Component {
                             this.jsonData[this.state.count].answer.map((el) => {
                                 return (<TouchableHighlight disabled={this.state.disable}
                                                             style={[styles.answerButton, {backgroundColor: (el.res === true && this.state.response === true) ? "#006400" : "white"},
-                                                                {borderColor: (this.props.updateQuizType.quizType === "Premium") ? "#FCB045" : "#9E005D"},
-                                                                {borderColor: (this.props.updateQuizType.quizType === "Simple") ? "#9E005D" : "#FCB045"}]}
+                                                                {borderColor: (this.props.updateQuizType.quizType === "Premium") ? "#FCB045" : "#9E005D" },
+                                                                {borderColor: (this.props.updateQuizType.quizType === "Simple") ? "#9E005D" : "#FCB045" }]}
                                                             onPress={() => {
                                                                 this.setState({
                                                                     qn: el.res,
@@ -103,6 +131,7 @@ class QuizVue extends React.Component {
                                                                     visible: true,
                                                                     timer: 1,
                                                                 });
+                                                                this._levelUp();
                                                             }}
                                                             underlayColor={"white"}>
                                     <Text>{el.nom}</Text>
@@ -116,6 +145,9 @@ class QuizVue extends React.Component {
                        animationType="slide"
                        transparent={true}
                        visible={this.state.visible}
+                       onRequestClose={() => {
+
+                       }}
                 >
                     <TouchableOpacity style={styles.modal}
                                       onPress={() => {
@@ -130,9 +162,9 @@ class QuizVue extends React.Component {
                 <Modal animationType="slide"
                        visible={this.state.enable}
                        onRequestClose={() => {
-                           const action = {type: "SELECT_THEME_END", value: []};
-                           this.props.dispatch(action);
+
                        }}
+
                        onPress={() => {
                            this.props.navigation.navigate("HomeScreen");
                            this.setState({
@@ -140,33 +172,16 @@ class QuizVue extends React.Component {
                            })
                        }}>
                     <ImageBackground source={require('../assets/Images/Result.png')} style={styles.result}>
-                        <View style={styles.burger}>
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.openDrawer()}
-                                title="Go back home"
-                            >
-                                <Image source={require('../assets/Images/DrawerIco.png')}/>
-                            </TouchableOpacity>
-                        </View>
                         <View style={styles.buttonContainer}>
-                            <Text style={{color: '#fff', fontSize: 50, marginBottom: 20, fontWeight: '600'}}>Quiz
-                                terminé !</Text>
-                            <Text style={{
-                                color: '#fff',
-                                fontSize: 30,
-                                marginBottom: 20
-                            }}>{"Score : " + this.state.score + " / " + this.jsonData.length}</Text>
-                            <Text style={{
-                                color: '#fff',
-                                fontSize: 25,
-                                marginBottom: 20
-                            }}>+ {this.props.updateExp.exp} XP</Text>
-                            <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate('HomeScreen');
-                            }}
-                                              style={[styles.button, {borderColor: (this.props.updateQuizType.quizType === "Premium") ? "#FCB045" : "#9E005D"},
-                                                  {borderColor: (this.props.updateQuizType.quizType === "Simple") ? "#9E005D" : "#FCB045"}]}>
-                                <Text style={styles.buttonText}>Accueil</Text>
+                            <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>Le Quiz est terminé</Text>
+                            <TouchableOpacity
+                                style={styles.button}
+                                onPress={() => {
+                                    this._levelUp();
+                                    this.props.navigation.navigate("HomeScreen");
+                                    this.setState({enable: false})
+                                }}>
+                                <Text style={{textAlign: 'center',}}>{"Score: " + this.state.score + " / " + this.jsonData.length}</Text>
                             </TouchableOpacity>
                         </View>
                     </ImageBackground>
@@ -265,9 +280,11 @@ const styles = StyleSheet.create({
         width: 251,
         height: 50,
         justifyContent: 'center',
-        backgroundColor: 'white',
-        borderWidth: 2,
+        borderColor: '#FC6B32',
+        backgroundColor: '#fff',
+        borderWidth: 1,
         alignContent: 'center',
+        marginBottom: 20
     },
 
     buttonText: {

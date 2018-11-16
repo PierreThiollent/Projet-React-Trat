@@ -17,7 +17,7 @@ function selectTheme(state = initialState, action) {
                 theme:  action.value,
             };
             return nextState || state;
-        case 'SELECT_THEME_END':
+        case 'SELECT_THEME_RESET':
             nextState = {
                 ...state,
                 theme:  action.value,
