@@ -1,7 +1,6 @@
 import React from 'react'
 import {Dimensions, Image, ImageBackground, Modal, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native'
 import CountdownCircle from 'react-native-countdown-circle';
-import {jsonCGData} from "../Data/CGQuizDataFacile";
 import {connect} from 'react-redux'
 import shuffle from 'shuffle-array'
 
@@ -87,8 +86,6 @@ class QuizVue extends React.Component {
             console.log("mon console.log")
         }
     };
-
-
 
 
     render() {

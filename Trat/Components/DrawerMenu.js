@@ -35,7 +35,7 @@ export default class DrawerMenu extends React.Component {
                         STATISITIQUES
                     </Text>
                     <Text
-                        onPress={() => this.props.navigation.navigate('HomeScreen')}
+                        onPress={() => this.props.navigation.navigate('BoutiqueScreen')}
                         style={styles.uglyDrawerItem}>
                         BOUTIQUE
                     </Text>

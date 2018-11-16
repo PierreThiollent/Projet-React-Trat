@@ -8,7 +8,7 @@ import QuizVue from "../Components/QuizVue";
 import Stats from "../Components/Stats";
 import Profile from "../Components/Profile";
 import SelectTheme from "../Components/SelectTheme";
-
+import Boutique from "../Components/Boutique"
 
 
 const AppStackNavigation = createStackNavigator(
@@ -39,9 +39,12 @@ const AppStackNavigation = createStackNavigator(
         ProfileScreen: {
             screen: Profile
         },
+        BoutiqueScreen: {
+            screen: Boutique,
+        }
     },
     {
-        initialRouteName: 'SelectQuiz',
+        initialRouteName: 'HomeScreen',
         navigationOptions: {
             header: null,
             headerStyle: {

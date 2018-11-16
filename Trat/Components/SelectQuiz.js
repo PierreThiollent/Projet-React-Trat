@@ -40,7 +40,7 @@ class SelectQuiz extends React.Component {
 
     _goToTheme = () => {
       if ( this.props.updateQuizType.quizType === "" || this.props.updateQuizLength.quizLength === 0) {
-          alert("Veuillez selectionner un type de quiz et une durée.");
+          alert("Veuillez séléctionner un type de quiz et une durée.");
       }
       else if  (this.props.updateQuizType.quizType === "Geoloc") {
           alert("Ce quiz n'est pas encore disponible.");
@@ -52,9 +52,6 @@ class SelectQuiz extends React.Component {
 
 
     render() {
-        console.log(this.props.selectTheme.theme);
-        console.log(this.props.updateQuizLength.quizLength);
-        console.log(this.props.updateQuizType.quizType);
         return (
             <ImageBackground source={require('../assets/Images/SelectQuiz.png')} style={styles.container}>
                 <View

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import connect from "react-redux/es/connect/connect";
+import {connect} from 'react-redux'
 
 class Home extends React.Component {
 
@@ -8,10 +8,12 @@ class Home extends React.Component {
         const action = {type: "UPD_LENGTH_RESET", value: 0};
         this.props.dispatch(action);
     }
+
     _resetQuizType() {
         const action = {type: "UPD_TYPE_RESET", value: ""};
         this.props.dispatch(action);
     }
+
     _resetQuizTheme() {
         const action = {type: "SELECT_THEME_RESET", value: []};
         this.props.dispatch(action);
@@ -51,7 +53,7 @@ class Home extends React.Component {
                                       style={[styles.button, {alignItems: 'flex-end', marginRight: 35}]}>
                         <Text style={[styles.buttonText, {marginRight: 15}]}>STATISTIQUES</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('')}
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('BoutiqueScreen')}
                                       style={[styles.button, {alignItems: 'flex-start'}]}>
                         <Text style={[styles.buttonText, {marginLeft: 15}]}>BOUTIQUE</Text>
                     </TouchableOpacity>
