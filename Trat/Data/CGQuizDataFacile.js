@@ -292,7 +292,7 @@ export const jsonCGData = {
             answer: [
                 {nom: "Une flamme olympique", res: false},
                 {nom: "UN hommage à la femme du président Americain", res: false},
-                {nom: "Une statut censer faire peur aux eventuelles attaquants de l'Amérique du Nord", res: false},
+                {nom: "Une statue censée faire peur aux attaquants d'Amérique du Nord", res: false},
                 {nom: "Un phare", res: true}
             ]
         },

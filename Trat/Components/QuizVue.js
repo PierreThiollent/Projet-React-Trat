@@ -19,6 +19,7 @@ class QuizVue extends React.Component {
             visible: false,
             response: false,
             timer: 30,
+            xp: 0
         })
     }
 
@@ -58,6 +59,7 @@ class QuizVue extends React.Component {
             this.updateExp();
             this.setState({
                     score: this.state.score + 1,
+                    xp: this.state.xp + 10,
 
                 }
             );
@@ -111,8 +113,8 @@ class QuizVue extends React.Component {
                     <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/LogoQuiz.png') : null}/>
                 </View>
                 <View style={styles.pic}>{this.jsonData[this.state.count].images}</View>
+                <View style={styles.container}><Text style={styles.questions}>{this.jsonData[this.state.count].title}</Text></View>
                 <View style={styles.quiz}>
-                    <Text style={styles.questions}>{this.jsonData[this.state.count].title}</Text>
                     <View style={styles.q_container}>
                         {
                             this.jsonData[this.state.count].answer.map((el) => {
@@ -131,7 +133,8 @@ class QuizVue extends React.Component {
                                                                 this._levelUp();
                                                             }}
                                                             underlayColor={"white"}>
-                                    <Text>{el.nom}</Text>
+                                    <Text allowFontScaling={true}
+                                          style={{textAlign: 'center', margin: 5}}>{el.nom}</Text>
 
                                 </TouchableHighlight>)
                             })
@@ -170,7 +173,7 @@ class QuizVue extends React.Component {
                        }}>
                     <ImageBackground source={require('../assets/Images/Result.png')} style={styles.result}>
                         <View style={styles.buttonContainer}>
-                            <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>Le Quiz est terminé</Text>
+                            <Text style={{color: '#fff', fontSize: 40, marginBottom: 20}}>Le Quiz est terminé</Text>
                             <TouchableOpacity
                                 style={styles.button}
                                 onPress={() => {
@@ -180,6 +183,7 @@ class QuizVue extends React.Component {
                                 }}>
                                 <Text style={{textAlign: 'center',}}>{"Score: " + this.state.score + " / " + this.jsonData.length}</Text>
                             </TouchableOpacity>
+                            <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>+ {this.state.xp} XP</Text>
                         </View>
                     </ImageBackground>
                 </Modal>
@@ -222,19 +226,25 @@ const styles = StyleSheet.create({
         marginBottom: 40,
 
     },
-    questions: {
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center',
         textAlign: 'center',
-        width: 300,
-        height: 100,
+        marginBottom: 40,
+
+    },
+    questions: {
         borderRadius: 5,
         color: 'white',
         fontSize: 25,
-        justifyContent: 'center',
+        textAlign: 'center',
+        marginBottom: 10
 
     },
     answerButton: {
-        width: 150,
-        height: 50,
+        width: 160,
+        height: 55,
+        padding: 10,
         marginTop: 20,
         borderRadius: 50,
         borderWidth: 2,
