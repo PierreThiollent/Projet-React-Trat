@@ -23,6 +23,18 @@ class QuizVue extends React.Component {
         })
     }
 
+    _upExpMax() {
+        const action = {type: "UPD_EXP_MAX", value: 2};
+        this.props.dispatch(action);
+    }
+    _nextLevel() {
+        const action = {type: "LEVEL_UP", value: +1};
+        this.props.dispatch(action);
+    }
+    _resetExp() {
+        const action = {type: "RESET_EXP", value: 0};
+        this.props.dispatch(action);
+    }
 
     _Next = () => {
         this._scoring();
@@ -62,7 +74,22 @@ class QuizVue extends React.Component {
     updateExp() {
         const action = {type: "UPD_EXP", value: +10};
         this.props.dispatch(action)
-    }
+    };
+
+    _levelUp = () => {
+        if (this.props.updateExp.exp === this.props.updateExpMax.expMax || this.props.updateExp.exp > this.props.updateExpMax.expMax) {
+            this._nextLevel();
+            this._upExpMax();
+            this._resetExp();
+
+        }
+        else {
+            console.log("mon console.log")
+        }
+    };
+
+
+
 
     render() {
         console.log(this.props.updateQuizLength.quizLength);
@@ -104,6 +131,7 @@ class QuizVue extends React.Component {
                                                                     visible: true,
                                                                     timer: 1,
                                                                 });
+                                                                this._levelUp();
                                                             }}
                                                             underlayColor={"white"}>
                                     <Text>{el.nom}</Text>
@@ -117,6 +145,9 @@ class QuizVue extends React.Component {
                        animationType="slide"
                        transparent={true}
                        visible={this.state.visible}
+                       onRequestClose={() => {
+
+                       }}
                 >
                     <TouchableOpacity style={styles.modal}
                                       onPress={() => {
@@ -130,8 +161,10 @@ class QuizVue extends React.Component {
                 </Modal>
                 <Modal animationType="slide"
                        visible={this.state.enable}
-                       onRequestClose={() => {const action = {type: "SELECT_THEME_END", value: []};
-                                                this.props.dispatch(action);}}
+                       onRequestClose={() => {
+
+                       }}
+
                        onPress={() => {
                            this.props.navigation.navigate("HomeScreen");
                            this.setState({
@@ -144,12 +177,12 @@ class QuizVue extends React.Component {
                             <TouchableOpacity
                                 style={styles.button}
                                 onPress={() => {
+                                    this._levelUp();
                                     this.props.navigation.navigate("HomeScreen");
                                     this.setState({enable: false})
                                 }}>
                                 <Text style={{textAlign: 'center',}}>{"Score: " + this.state.score + " / " + this.jsonData.length}</Text>
                             </TouchableOpacity>
-                            <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>+ {this.props.updateExp.exp} XP</Text>
                         </View>
                     </ImageBackground>
                 </Modal>
@@ -235,6 +268,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    burger: {
+        position: 'absolute',
+        top: '5%',
+        right: '5%',
+        zIndex: 10,
+    },
+
     button: {
         borderRadius: 50,
         width: 251,
@@ -247,6 +287,11 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
 
+    buttonText: {
+        color: 'black',
+        fontSize: 17,
+        textAlign: 'center'
+    }
 });
 
 const mapStateToProps = (state) => {

@@ -182,22 +182,11 @@ class SelectTheme extends React.Component {
                             </Text>
                         </View>
                     </View>
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.buttonText}>5 minutes</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.buttonText}>10 minutes</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.buttonText}>15 minutes</Text>
-                        </TouchableOpacity>
-                    </View>
                 </ScrollView>
             </ImageBackground>
         )
     }
-};
+}
 
 const styles = StyleSheet.create({
     main_container: {

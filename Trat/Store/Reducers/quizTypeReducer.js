@@ -21,6 +21,12 @@ function updateQuizType(state = initialState, action) {
                 quizType:  action.value,
             };
             return nextState || state;
+        case 'UPD_TYPE_RESET':
+            nextState = {
+                ...state,
+                quizType:  action.value,
+            };
+            return nextState || state;
         default:
             return state
     }
