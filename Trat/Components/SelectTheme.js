@@ -38,13 +38,15 @@ class SelectTheme extends React.Component {
                         </View>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate("")
+                                this.props.navigation.navigate("QuizVue");
+                                const action = {type: "SELECT_THEME_SCIENCE", value: jsonScienceData};
+                                this.props.dispatch(action);
                             }}>
-                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Histoire.png') : null}/>
-                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Histoire.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Science.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Science.png') : null}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
-                                Histoire
+                                Sciences
                             </Text>
                         </View>
                         <View style={styles.topa}>
@@ -73,15 +75,13 @@ class SelectTheme extends React.Component {
                         </View>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate("QuizVue");
-                                const action = {type: "SELECT_THEME_SCIENCE", value: jsonScienceData};
-                                this.props.dispatch(action);
+                                this.props.navigation.navigate("")
                             }}>
-                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Science.png') : null}/>
-                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Science.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Histoire.png') : null}/>
+                                <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Histoire.png') : null}/>
                             </TouchableOpacity>
                             <Text style={styles.txt}>
-                                Sciences
+                                Histoire
                             </Text>
                         </View>
                         <View style={styles.topa}>
