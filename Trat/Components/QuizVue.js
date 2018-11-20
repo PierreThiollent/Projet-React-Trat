@@ -129,7 +129,7 @@ class QuizVue extends React.Component {
                     style={styles.questions}>{this.jsonDataQuestion[this.state.count].title}</Text></View>
                 <View style={styles.quiz}>
                     <View style={styles.q_container}>
-                        {this.jsonDataQuestion[this.state.count].map((el) => {
+                        {this.jsonDataQuestion[this.state.count].answer.map((el) => {
                             return (
                                 <TouchableHighlight disabled={this.state.disable}
                                                     style={[styles.answerButton, {backgroundColor: (el.res === true && this.state.response === true) ? "#006400" : "white"},
@@ -146,7 +146,7 @@ class QuizVue extends React.Component {
                                                         this._levelUp();
                                                     }}
                                                     underlayColor={"white"}>
-                                    <Text style={{textAlign: 'center'}}>{el.nom}</Text>
+                                    <Text style={{textAlign: 'center'}} key={el.nom}>{el.nom}</Text>
                                 </TouchableHighlight>)
                         })}
                     </View>

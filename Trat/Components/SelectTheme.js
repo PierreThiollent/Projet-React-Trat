@@ -51,7 +51,7 @@ class SelectTheme extends React.Component {
                         </View>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate("")
+                                alert("Ce thème n'est pas encore disponible.");
                             }}>
                                 <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Langues.png') : null}/>
                                 <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Langues.png') : null}/>
@@ -64,7 +64,7 @@ class SelectTheme extends React.Component {
                     <View style={styles.icon}>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate("")
+                                alert("Ce thème n'est pas encore disponible.");
                             }}>
                                 <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Sport.png') : null}/>
                                 <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Sport.png') : null}/>
@@ -75,7 +75,7 @@ class SelectTheme extends React.Component {
                         </View>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate("")
+                                alert("Ce thème n'est pas encore disponible.");
                             }}>
                                 <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Histoire.png') : null}/>
                                 <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Histoire.png') : null}/>
@@ -86,7 +86,7 @@ class SelectTheme extends React.Component {
                         </View>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate("")
+                                alert("Ce thème n'est pas encore disponible.");
                             }}>
                                 <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Arts.png') : null}/>
                                 <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Arts.png') : null}/>
@@ -99,7 +99,7 @@ class SelectTheme extends React.Component {
                     <View style={styles.icon}>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate("")
+                                alert("Ce thème n'est pas encore disponible.");
                             }}>
                                 <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Numerique.png') : null}/>
                                 <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Numerique.png') : null}/>
@@ -110,7 +110,7 @@ class SelectTheme extends React.Component {
                         </View>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate("")
+                                alert("Ce thème n'est pas encore disponible.");
                             }}>
                                 <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/TV.png') : null}/>
                                 <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/TV.png') : null}/>
@@ -121,7 +121,7 @@ class SelectTheme extends React.Component {
                         </View>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate("")
+                                alert("Ce thème n'est pas encore disponible.");
                             }}>
                                 <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Musique.png') : null}/>
                                 <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Musique.png') : null}/>
@@ -134,7 +134,7 @@ class SelectTheme extends React.Component {
                     <View style={styles.icon}>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate("")
+                                alert("Ce thème n'est pas encore disponible.");
                             }}>
                                 <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Animaux.png') : null}/>
                                 <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Animaux.png') : null}/>
@@ -145,7 +145,7 @@ class SelectTheme extends React.Component {
                         </View>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate("")
+                                alert("Ce thème n'est pas encore disponible.");
                             }}>
                                 <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/JeuxVideo.png') : null}/>
                                 <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/JeuxVideo.png') : null}/>
@@ -156,7 +156,7 @@ class SelectTheme extends React.Component {
                         </View>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate("")
+                                alert("Ce thème n'est pas encore disponible.");
                             }}>
                                 <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Nourriture.png') : null}/>
                                 <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Nourriture.png') : null}/>
@@ -169,7 +169,7 @@ class SelectTheme extends React.Component {
                     <View style={styles.icon}>
                         <View style={styles.topa}>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate("")
+                                alert("Ce thème n'est pas encore disponible.");
                             }}>
                                 <Image source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/Sante.png') : null}/>
                                 <Image source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/Sante.png') : null}/>
