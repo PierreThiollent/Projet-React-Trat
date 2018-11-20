@@ -120,13 +120,13 @@ class QuizVue extends React.Component {
                 </View>
                 <View style={styles.head_container}>
                     <Image
-                        source={(this.props.updateQuizType.quizType === "Premium") ? require('../assets/Images/Theme/Premium/LogoQuiz.png') : null}/>
+                        source={(this.props.updateQuizType.quizType === "Premium") && require('../assets/Images/Theme/Premium/LogoQuiz.png')}/>
                     <Image
-                        source={(this.props.updateQuizType.quizType === "Simple") ? require('../assets/Images/Theme/Simple/LogoQuiz.png') : null}/>
+                        source={(this.props.updateQuizType.quizType === "Simple") && require('../assets/Images/Theme/Simple/LogoQuiz.png')}/>
                 </View>
-                <View style={styles.pic}>{this.jsonDataQuestion[this.state.count].images}</View>
+                <View style={styles.pic} key={this.jsonDataQuestion[this.state.count].images}>{this.jsonDataQuestion[this.state.count].images}</View>
                 <View style={styles.container}><Text
-                    style={styles.questions}>{this.jsonDataQuestion[this.state.count].title}</Text></View>
+                    style={styles.questions} key={this.jsonDataQuestion[this.state.count].title}>{this.jsonDataQuestion[this.state.count].title}</Text></View>
                 <View style={styles.quiz}>
                     <View style={styles.q_container}>
                         {this.jsonDataQuestion[this.state.count].answer.map((el) => {
