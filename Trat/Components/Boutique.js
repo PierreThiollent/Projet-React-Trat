@@ -1,8 +1,28 @@
 import React from 'react';
 import {Dimensions, StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
+import connect from "react-redux/es/connect/connect";
 
-export default class Boutique extends React.Component {
+class Boutique extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = ({
+            price: 0
+        })
+    }
+
+    _resetCoins() {
+        if (this.props.updateCoins.coins < this.state.price) {
+            alert("Plus de Thunes")
+        }
+        else {
+            const action = {type: "RESET_COINS", value: this.state.price};
+            this.props.dispatch(action);
+        }
+    }
+
     render() {
+        console.log(this.state.price);
         return (
             <View style={styles.container}>
                 <View style={styles.burger}>
@@ -19,15 +39,21 @@ export default class Boutique extends React.Component {
 
                     <View style={styles.userInfos}>
                         <Text style={styles.title}>Martin Hériché</Text>
-                        <Text style={{fontSize: 17, color: 'white', marginLeft: 15, marginBottom: 50,}}>899
-                            Points</Text>
+                        <Text style={{fontSize: 17, color: 'white', marginLeft: 15, marginBottom: 50,}}>{this.props.updateCoins.coins}
+                             Points</Text>
                     </View>
 
 
                     <Text style={styles.title}>PROMOTIONS</Text>
                     <View style={[styles.promotions,{marginTop:20,}]}>
                         <View>
-                            <TouchableOpacity style={{width: 40 + "%"}}>
+                            <TouchableOpacity onPress={() => {
+                                                            this._resetCoins();
+                                                            this.setState({
+                                                                price: 325,
+                                                        })}
+                            }
+                                              style={{width: 40 + "%"}}>
                                 <Image source={require('../assets/Images/ReductionB.png')}/>
                             </TouchableOpacity>
                         </View>
@@ -46,7 +72,12 @@ export default class Boutique extends React.Component {
                                 2500 points</Text>
                         </View>
                         <View>
-                            <TouchableOpacity style={{width: 40 + "%"}}>
+                            <TouchableOpacity onPress={() => {
+                                this._resetCoins();
+                                this.setState({
+                                    price: 2500,
+                                })}
+                            } style={{width: 40 + "%"}}>
                                 <Image source={require('../assets/Images/ReductionBI.png')}/>
                             </TouchableOpacity>
                         </View>
@@ -54,7 +85,13 @@ export default class Boutique extends React.Component {
                     </View>
                     <View style={styles.promotions}>
                         <View>
-                            <TouchableOpacity style={{width: 40 + "%"}}>
+                            <TouchableOpacity onPress={() => {
+                                this._resetCoins();
+                                this.setState({
+                                    price: 750,
+                                })}
+                            }
+                                style={{width: 40 + "%"}}>
                                 <Image source={require('../assets/Images/ReductionInt.png')}/>
                             </TouchableOpacity>
                         </View>
@@ -112,3 +149,7 @@ const styles = StyleSheet.create({
 
     }
 });
+const mapStateToProps = (state) => {
+    return state
+};
+export default connect(mapStateToProps)(Boutique)

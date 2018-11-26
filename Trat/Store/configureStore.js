@@ -5,6 +5,7 @@ import updateQuizType from './Reducers/quizTypeReducer'
 import selectTheme from "./Reducers/quizThemeReducer";
 import levelUp from "./Reducers/lvlupReducer";
 import updateExpMax from "./Reducers/expMaxReducer";
+import updateCoins from "./Reducers/coinsReducer";
 
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     selectTheme,
     levelUp,
     updateExpMax,
+    updateCoins
 });
 
 export default createStore(rootReducer)

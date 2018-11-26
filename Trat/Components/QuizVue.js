@@ -96,12 +96,25 @@ class QuizVue extends React.Component {
         this.props.dispatch(action);
     }
 
+    _updateCoins() {
+        const action = {type: "UPD_COINS", value: +20};
+        this.props.dispatch(action);
+    }
+
     updateExp() {
-        const action = {type: "UPD_EXP", value: +10};
-        this.props.dispatch(action)
+        if ( this.props.updateQuizType.quizType === "Premium") {
+            this._updateCoins();
+            const action = {type: "UPD_EXP", value: +10};
+            this.props.dispatch(action)
+        }
+        else {
+            const action = {type: "UPD_EXP", value: +10};
+            this.props.dispatch(action)
+        }
     };
 
     render() {
+        console.log("thune " + this.props.updateCoins.coins);
         return (
             <ImageBackground style={styles.main_container}>
                 <View style={styles.timer}>

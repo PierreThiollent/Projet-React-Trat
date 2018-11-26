@@ -1,6 +1,7 @@
 import React from 'react';
 import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import LottieView from 'lottie-react-native';
 
 class Home extends React.Component {
 
@@ -19,13 +20,28 @@ class Home extends React.Component {
         this.props.dispatch(action);
     }
 
+    componentDidMount() {
+        this.animation.play();
+    }
+
 
     render() {
         return (
             <ImageBackground source={require('../assets/Images/Home.png')} style={styles.container}>
+                <View style={{width: 160+"%", height: 400, flex: 2, justifyContent: 'center'}}>
+                    <LottieView
+                        ref={animation => {
+                            this.animation=animation;
+                        }}
+                        autoPlay
+                        autoSize={false}
+                        loop={false}
+                        source={require('../Animations/logo')}
+                    />
+                </View>
                 <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', width: 90 + '%'}}>
                     <Text style={styles.description}>
-                        Trat est un quiz détiné à occuper votre temps libre dans les transports en commun avec des
+                        Trat est un quiz destiné à occuper votre temps libre dans les transports en commun avec des
                         questions variées.
                     </Text>
                     <Text style={styles.description}>
@@ -75,7 +91,7 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center',
         fontWeight: '700',
-        marginTop: 80,
+        marginBottom:10,
         fontSize: 17
     },
     buttonContainer: {
