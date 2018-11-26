@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions, StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
+import {Dimensions, Image, Modal, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import connect from "react-redux/es/connect/connect";
 
 class Boutique extends React.Component {
@@ -7,17 +7,18 @@ class Boutique extends React.Component {
     constructor(props) {
         super(props);
         this.state = ({
-            price: 0
+            price: 0,
+            visible: false
         })
     }
 
     _resetCoins() {
         if (this.props.updateCoins.coins < this.state.price) {
-            alert("Plus de Thunes")
-        }
-        else {
+            alert("Plus de Thunes");
+        } else {
             const action = {type: "RESET_COINS", value: this.state.price};
             this.props.dispatch(action);
+            this.setState({visible: false});
         }
     }
 
@@ -36,22 +37,25 @@ class Boutique extends React.Component {
 
                 <View style={styles.header}>
                     <Text style={styles.title}>BOUTIQUE</Text>
-
                     <View style={styles.userInfos}>
                         <Text style={styles.title}>Martin Hériché</Text>
-                        <Text style={{fontSize: 17, color: 'white', marginLeft: 15, marginBottom: 50,}}>{this.props.updateCoins.coins}
-                             Points</Text>
+                        <Text style={{
+                            fontSize: 17,
+                            color: 'white',
+                            marginLeft: 15,
+                            marginBottom: 50,
+                        }}>{this.props.updateCoins.coins}
+                            Points</Text>
                     </View>
-
-
                     <Text style={styles.title}>PROMOTIONS</Text>
-                    <View style={[styles.promotions,{marginTop:20,}]}>
+                    <View style={[styles.promotions, {marginTop: 20,}]}>
                         <View>
                             <TouchableOpacity onPress={() => {
-                                                            this._resetCoins();
-                                                            this.setState({
-                                                                price: 325,
-                                                        })}
+                                this.setState({
+                                    price: 325,
+                                    visible: true
+                                })
+                            }
                             }
                                               style={{width: 40 + "%"}}>
                                 <Image source={require('../assets/Images/ReductionB.png')}/>
@@ -73,11 +77,11 @@ class Boutique extends React.Component {
                         </View>
                         <View>
                             <TouchableOpacity onPress={() => {
-                                this._resetCoins();
                                 this.setState({
                                     price: 2500,
-                                })}
-                            } style={{width: 40 + "%"}}>
+                                    visible: true
+                                })
+                            }} style={{width: 40 + "%"}}>
                                 <Image source={require('../assets/Images/ReductionBI.png')}/>
                             </TouchableOpacity>
                         </View>
@@ -86,12 +90,13 @@ class Boutique extends React.Component {
                     <View style={styles.promotions}>
                         <View>
                             <TouchableOpacity onPress={() => {
-                                this._resetCoins();
                                 this.setState({
                                     price: 750,
-                                })}
+                                    visible: true
+                                })
                             }
-                                style={{width: 40 + "%"}}>
+                            }
+                                              style={{width: 40 + "%"}}>
                                 <Image source={require('../assets/Images/ReductionInt.png')}/>
                             </TouchableOpacity>
                         </View>
@@ -102,10 +107,30 @@ class Boutique extends React.Component {
                                 750 points</Text>
                         </View>
                     </View>
-
                 </View>
-
-
+                <Modal animationType="slide"
+                       presentationStyle='formSheet'
+                       visible={this.state.visible}
+                       onRequestClose={() => {
+                       }}
+                       onPress={() => {
+                       }}>
+                    <View style={styles.modal}>
+                        <Text style={{color: '#fff', fontSize: 40, marginBottom: 20}}>Voulez-vous vraiment acheter cette
+                            réduction ?</Text>
+                        <Text>Prix : {this.state.price}</Text>
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={() => {
+                                this._resetCoins()
+                            }}><Text>Oui</Text></TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={() => {
+                                this.setState({visible: false})
+                            }}><Text>Non</Text></TouchableOpacity>
+                    </View>
+                </Modal>
             </View>
         )
     }
@@ -117,7 +142,6 @@ const styles = StyleSheet.create({
         flex: 1,
         width: Dimensions.get('window').width,
         backgroundColor: "black",
-
     },
 
     burger: {
@@ -145,9 +169,26 @@ const styles = StyleSheet.create({
     promotions: {
         flexDirection: "row",
         alignItems: "center",
-
-
-    }
+    },
+    modal: {
+        width: 80 + '%',
+        height: 100,
+        backgroundColor: 'red',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    button: {
+        borderRadius: 50,
+        width: 251,
+        height: 50,
+        justifyContent: 'center',
+        borderColor: '#FC6B32',
+        backgroundColor: '#fff',
+        borderWidth: 1,
+        alignContent: 'center',
+        marginBottom: 20
+    },
 });
 const mapStateToProps = (state) => {
     return state
