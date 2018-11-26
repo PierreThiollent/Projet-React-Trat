@@ -77,6 +77,7 @@ class QuizVue extends React.Component {
             visible: false,
             response: false,
             timer: 30,
+            money: 0,
             xp: 0
         })
     }
@@ -97,6 +98,9 @@ class QuizVue extends React.Component {
     }
 
     _updateCoins() {
+        this.setState({
+            money: this.state.money + 20,
+        });
         const action = {type: "UPD_COINS", value: +20};
         this.props.dispatch(action);
     }
@@ -218,6 +222,10 @@ class QuizVue extends React.Component {
                                     style={{textAlign: 'center',}}>{"Score: " + this.state.score + " / " + this.jsonDataQuestion.length}</Text>
                             </TouchableOpacity>
                             <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>+ {this.state.xp} XP</Text>
+                            {
+                                (this.props.updateQuizType.quizType === "Premium") && <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>+ {this.state.money} $$</Text>
+                            }
+
                         </View>
                     </ImageBackground>
                 </Modal>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions, Image, Modal, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Dimensions, Image, Modal, StyleSheet, Text, TouchableOpacity, View, ScrollView} from 'react-native';
 import connect from "react-redux/es/connect/connect";
 
 class Boutique extends React.Component {
@@ -48,87 +48,87 @@ class Boutique extends React.Component {
                             Points</Text>
                     </View>
                     <Text style={styles.title}>PROMOTIONS</Text>
-                    <View style={[styles.promotions, {marginTop: 20,}]}>
-                        <View>
-                            <TouchableOpacity onPress={() => {
-                                this.setState({
-                                    price: 325,
-                                    visible: true
-                                })
-                            }
-                            }
-                                              style={{width: 40 + "%"}}>
-                                <Image source={require('../assets/Images/ReductionB.png')}/>
-                            </TouchableOpacity>
+                    <ScrollView style={{marginTop: 20,}}>
+                        <View style={styles.promotions}>
+                            <View style={styles.promWidth}>
+                                <TouchableOpacity onPress={() => {
+                                    this.setState({
+                                        price: 325,
+                                        visible: true
+                                    })
+                                }
+                                }
+                                >
+                                    <Image source={require('../assets/Images/ReductionB.png')}/>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.promWidth}>
+                                <Text style={{ color: 'white', textAlign: "center",}}>Ticket de transport
+                                    1 voyage:
+                                    325 points</Text>
+                            </View>
                         </View>
-                        <View style={{width: 50 + "%", flexWrap: "wrap",}}>
+                        <View style={styles.promotions}>
+                            <View style={styles.promWidth}>
+                                <Text style={{ color: 'white', textAlign: "center",}}>Ticket de transport
+                                    10 voyages: 2500 points</Text>
+                            </View>
+                            <View style={styles.promWidth}>
+                                <TouchableOpacity onPress={() => {
+                                    this.setState({
+                                        price: 2500,
+                                        visible: true
+                                    })
+                                }}>
+                                    <Image source={require('../assets/Images/ReductionBI.png')}/>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        <View style={styles.promotions}>
+                            <View style={styles.promWidth}>
+                                <TouchableOpacity onPress={() => {
+                                    this.setState({
+                                        price: 750,
+                                        visible: true
+                                    })
+                                }
+                                }
+                                >
+                                    <Image source={require('../assets/Images/ReductionInt.png')}/>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.promWidth}>
 
-                            <Text style={{fontSize: 17, color: 'white', textAlign: "center",}}>Ticket de transport
-                                (1 voyage)
-                                325 points</Text>
+                                <Text style={{ color: 'white', textAlign: "center",}}>Bon d’achat de 10€
+                                    Intermarché:
+                                    750 points</Text>
+                            </View>
                         </View>
-                    </View>
-                    <View style={styles.promotions}>
-                        <View style={{width: 50 + "%", flexWrap: "wrap",}}>
-
-                            <Text style={{fontSize: 17, color: 'white', textAlign: "center",}}>Ticket de transport
-                                (10 voyage)
-                                2500 points</Text>
-                        </View>
-                        <View>
-                            <TouchableOpacity onPress={() => {
-                                this.setState({
-                                    price: 2500,
-                                    visible: true
-                                })
-                            }} style={{width: 40 + "%"}}>
-                                <Image source={require('../assets/Images/ReductionBI.png')}/>
-                            </TouchableOpacity>
-                        </View>
-
-                    </View>
-                    <View style={styles.promotions}>
-                        <View>
-                            <TouchableOpacity onPress={() => {
-                                this.setState({
-                                    price: 750,
-                                    visible: true
-                                })
-                            }
-                            }
-                                              style={{width: 40 + "%"}}>
-                                <Image source={require('../assets/Images/ReductionInt.png')}/>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{width: 50 + "%", flexWrap: "wrap",}}>
-
-                            <Text style={{fontSize: 17, color: 'white', textAlign: "center",}}>Bon d’achat de 10€
-                                Intermarché
-                                750 points</Text>
-                        </View>
-                    </View>
+                    </ScrollView>
                 </View>
                 <Modal animationType="slide"
-                       presentationStyle='formSheet'
+                       transparent={true}
                        visible={this.state.visible}
                        onRequestClose={() => {
                        }}
                        onPress={() => {
                        }}>
                     <View style={styles.modal}>
-                        <Text style={{color: '#fff', fontSize: 40, marginBottom: 20}}>Voulez-vous vraiment acheter cette
-                            réduction ?</Text>
-                        <Text>Prix : {this.state.price}</Text>
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={() => {
-                                this._resetCoins()
-                            }}><Text>Oui</Text></TouchableOpacity>
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={() => {
-                                this.setState({visible: false})
-                            }}><Text>Non</Text></TouchableOpacity>
+                        <View style={styles.modalContent}>
+                            <Text style={styles.modalText}>Voulez-vous vraiment acheter cette
+                                réduction ?</Text>
+                            <Text style={[styles.modalText, {marginTop: 5}]}>Prix : {this.state.price}</Text>
+                            <TouchableOpacity
+                                style={styles.button}
+                                onPress={() => {
+                                    this._resetCoins()
+                                }}><Text style={styles.modalText}>Oui</Text></TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.button}
+                                onPress={() => {
+                                    this.setState({visible: false})
+                                }}><Text style={styles.modalText}>Non</Text></TouchableOpacity>
+                        </View>
                     </View>
                 </Modal>
             </View>
@@ -169,14 +169,30 @@ const styles = StyleSheet.create({
     promotions: {
         flexDirection: "row",
         alignItems: "center",
+        flexWrap: 'wrap',
+        textAlign: 'center',
+        justifyContent: 'space-around'
+    },
+    promWidth: {
+        width: "50%"
     },
     modal: {
-        width: 80 + '%',
-        height: 100,
-        backgroundColor: 'red',
         flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    modalContent: {
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRadius: 20,
+        width: "80%",
+        height: "33%"
+    },
+    modalText: {
+        color: '#fff',
+        fontSize: 17,
+        textAlign: 'center'
     },
     button: {
         borderRadius: 50,
@@ -184,10 +200,10 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: 'center',
         borderColor: '#FC6B32',
-        backgroundColor: '#fff',
+        backgroundColor: 'rgba(0, 0, 0, 0.9)',
         borderWidth: 1,
-        alignContent: 'center',
-        marginBottom: 20
+        alignItems: 'center',
+        marginTop: 20
     },
 });
 const mapStateToProps = (state) => {

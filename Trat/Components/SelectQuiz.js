@@ -111,7 +111,7 @@ class SelectQuiz extends React.Component {
                             time: 5,
                         });
                     }}
-                                      style={[styles.button, {backgroundColor: (this.state.time === 5) ? "#rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0.3)"}]}>
+                                      style={[styles.button, {backgroundColor: (this.state.time === 5) ? "rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0.3)"}]}>
                         <Text style={styles.buttonText}>5 minutes</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
@@ -120,7 +120,7 @@ class SelectQuiz extends React.Component {
                             time: 10,
                         });
                     }}
-                                      style={[styles.button, {backgroundColor: (this.state.time === 10) ? "#rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0.3)"}]}>
+                                      style={[styles.button, {backgroundColor: (this.state.time === 10) ? "rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0.3)"}]}>
                         <Text style={styles.buttonText}>10 minutes</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
@@ -129,7 +129,7 @@ class SelectQuiz extends React.Component {
                             time: 15,
                         });
                     }}
-                    style={[styles.button, {backgroundColor: (this.state.time === 15) ? "#rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0.3)"}]}>
+                    style={[styles.button, {backgroundColor: (this.state.time === 15) ? "rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0.3)"}]}>
                         <Text style={styles.buttonText}>15 minutes</Text>
                     </TouchableOpacity>
                 </View>
