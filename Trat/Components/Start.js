@@ -3,7 +3,6 @@ import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View} f
 import * as firebase from 'firebase';
 import LottieView from 'lottie-react-native';
 
-// Initialize Firebase
 export var firebaseConfig = {
     apiKey: "AIzaSyDZABsfg5EI--eO4N2AogYOJMfrM7DMl0s",
     authDomain: "trat-46dbc.firebaseapp.com",
@@ -14,56 +13,46 @@ export var firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-firebase.auth().signInAnonymously().catch(function (error) {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-});
 
 export default class Start extends React.Component {
 
     signInAnonymous = () => {
-        firebase.auth().onAuthStateChanged(function (user) {
+        firebase.auth().signInAnonymously().catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
 
-            if (user) {
-                // User is signed in.
-                const isAnonymous = user.isAnonymous;
-                let uid = user.uid;
-                console.log("L'UID est : " + uid);
-                console.log(user);
+            if (errorCode === 'auth/operation-not-allowed') {
+                alert('You must enable Anonymous auth in the Firebase Console.');
             }
             else {
-                console.log("lolilol");
+                console.error(error);
             }
-
-        });
-
+        })
     };
-
 
     componentDidMount() {
         this.animation.play();
         firebase.auth().onAuthStateChanged((user) => {
-            if (user ) {
+            if (user) {
                 console.log(user);
                 this.props.navigation.navigate('HomeScreen');
             }
         })
     }
 
-
     render() {
         return (
             <ImageBackground source={require('../assets/Images/Start.png')} style={styles.container}>
-                <View style={{width: 160+"%", height: 400, flex: 2, justifyContent: 'center'}}>
-                <LottieView
-                    ref={animation => {
-                        this.animation=animation;
-                    }}
-                    autoPlay
-                    autoSize={false}
-                    loop={false}
-                    source={require('../Animations/logo')}
-                />
+                <View style={{width: 160 + "%", height: 400, flex: 2, justifyContent: 'center'}}>
+                    <LottieView
+                        ref={animation => {
+                            this.animation = animation;
+                        }}
+                        autoPlay
+                        autoSize={false}
+                        loop={false}
+                        source={require('../Animations/logo')}
+                    />
                 </View>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity
@@ -95,7 +84,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonContainer: {
-        flex:2,
+        flex: 2,
         marginTop: 80
     },
     button: {
