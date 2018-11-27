@@ -9,6 +9,7 @@ import Stats from "../Components/Stats";
 import Profile from "../Components/Profile";
 import SelectTheme from "../Components/SelectTheme";
 import Boutique from "../Components/Boutique"
+import Avantages from "../Components/Avantages"
 
 
 const AppStackNavigation = createStackNavigator(
@@ -41,10 +42,13 @@ const AppStackNavigation = createStackNavigator(
         },
         BoutiqueScreen: {
             screen: Boutique,
+        },
+        AvantagesScreen: {
+            screen: Avantages,
         }
     },
     {
-        initialRouteName: 'HomeScreen',
+        initialRouteName: 'StartScreen',
         navigationOptions: {
             header: null,
             headerStyle: {

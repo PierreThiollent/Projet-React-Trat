@@ -169,10 +169,10 @@ export const jsonCGData = {
             images: <Image source={require('./assetsData/CultureG/cut/QCG17.png')}/>,
             title: "Paul Verlaine est avant tout …",
             answer: [
-                {nom: "un poète", res: true},
-                {nom: "un romancier", res: false},
-                {nom: "un essayiste", res: false},
-                {nom: "un dramaturge", res: false}
+                {nom: "Un poète", res: true},
+                {nom: "Un romancier", res: false},
+                {nom: "Un essayiste", res: false},
+                {nom: "Un dramaturge", res: false}
             ]
         },
         {
@@ -291,7 +291,7 @@ export const jsonCGData = {
             title: "Qu'etait en realité la Statut de la Liberté ?",
             answer: [
                 {nom: "Une flamme olympique", res: false},
-                {nom: "UN hommage à la femme du président Americain", res: false},
+                {nom: "Un hommage à la femme du président Americain", res: false},
                 {nom: "Une statut censer faire peur aux eventuelles attaquants de l'Amérique du Nord", res: false},
                 {nom: "Un phare", res: true}
             ]
@@ -442,10 +442,10 @@ export const jsonCGData = {
             images: <Image source={require('./assetsData/CultureG/cut/QCG44.png')}/>,
             title: "Comment la femelle crocodile peit elle choisir le sexe de ses enfants",
             answer: [
-                {nom: "elle tue les filles", res: false},
-                {nom: "elle tourne les oeufs d'un quart tout les jours", res: false},
-                {nom: "elle couve les oeufs dont elle veut les mals", res: false},
-                {nom: "elle enterre plus ou moins les oeufs", res: true}
+                {nom: "Elle tue les filles", res: false},
+                {nom: "Elle tourne les oeufs d'un quart tout les jours", res: false},
+                {nom: "Elle couve les oeufs dont elle veut les mals", res: false},
+                {nom: "Elle enterre plus ou moins les oeufs", res: true}
             ]
         },
         {
@@ -542,10 +542,10 @@ export const jsonCGData = {
             images: <Image source={require('./assetsData/CultureG/cut/QCG54.png')}/>,
             title: "A l'origine quelle devait être la couleur de la peau des simpson ?",
             answer: [
-                {nom: "bleu", res: false},
-                {nom: "blanc", res: false},
-                {nom: "vert", res: true},
-                {nom: "jaune", res: false}
+                {nom: "Bleu", res: false},
+                {nom: "Blanc", res: false},
+                {nom: "Vert", res: true},
+                {nom: "Jaune", res: false}
             ]
         },
 
@@ -554,8 +554,8 @@ export const jsonCGData = {
             title: "Quel animal n'a pas d'estomac ?",
             answer: [
                 {nom: "L'ornithorynque", res: true},
-                {nom: "l'escargot", res: false},
-                {nom: "l'échidné", res: true},
+                {nom: "L'escargot", res: false},
+                {nom: "L'échidné", res: true},
                 {nom: "Le seprent", res: false}
             ]
         },
@@ -684,7 +684,7 @@ export const jsonCGData = {
             images: <Image source={require('./assetsData/CultureG/cut/QCG68.png')}/>,
             title: "Lequel de ces crustacé possède des dents ?",
             answer: [
-                {nom: "la crevette", res: false},
+                {nom: "La crevette", res: false},
                 {nom: "La langouste", res: false},
                 {nom: "Le homard", res: true},
                 {nom: "Le crabe", res: false}
@@ -737,7 +737,7 @@ export const jsonCGData = {
                 {nom: "La cigarette", res: false},
                 {nom: "Des crevettes", res: true},
                 {nom: "Une maladie rare", res: false},
-                {nom: "une maladie moin rare", res: false}
+                {nom: "Une maladie moins rare", res: false}
             ]
         },
         {
@@ -817,7 +817,7 @@ export const jsonCGData = {
             answer: [
                 {nom: "Ses eaux ne rejoignent jamais l'océan", res: true},
                 {nom: "Les crocodiles et caïmans ont disparu", res: false},
-                {nom: "il disparait dans une faille géologique et réapparait dans la forêt équatoriale ", res: false},
+                {nom: "Il disparait dans une faille géologique et réapparait dans la forêt équatoriale ", res: false},
                 {nom: "Sa profondeur ne dépasse jamais les 1 mètre", res: false}
             ]
         },
@@ -858,7 +858,7 @@ export const jsonCGData = {
                 {nom: "L'influence sur les réseaux sociaux", res: false},
                 {nom: "La force des piments", res: true},
                 {nom: "La puissance des vagues", res: false},
-                {nom: "la douleur des piqûre d'insectes", res: false}
+                {nom: "La douleur des piqûre d'insectes", res: false}
             ]
         },
         {
@@ -967,7 +967,7 @@ export const jsonCGData = {
             title: "La première recette du coca-cola a été créée par...",
             answer: [
                 {nom: "Un ingénieur", res: false},
-                {nom: "UN pharmacien", res: true},
+                {nom: "Un pharmacien", res: true},
                 {nom: "Coca-cola", res: false},
                 {nom: "Un chimiste", res: false}
             ]

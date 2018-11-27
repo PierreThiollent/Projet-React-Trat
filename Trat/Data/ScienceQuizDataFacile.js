@@ -30,7 +30,7 @@ export const jsonScienceData = {
             answer: [
                 {nom: " De l'aragonite", res: false},
                 {nom: "De l'ambre", res: true},
-                {nom: "de l'agathe", res: false},
+                {nom: "De l'agathe", res: false},
                 {nom: "Du quartz", res: false}
             ]
         },
@@ -78,10 +78,10 @@ export const jsonScienceData = {
         	images: <Image source={require('./assetsData/Science/cut/QSC8.png')}/>,
             title: "Comment s'appelle l'unité d'énergie ?",
             answer: [
-                {nom: "joule", res: true},
-                {nom: "calorie", res: false},
-                {nom: "dalton", res: false},
-                {nom: "watt", res: false}
+                {nom: "Joule", res: true},
+                {nom: "Calorie", res: false},
+                {nom: "Dalton", res: false},
+                {nom: "Watt", res: false}
             ]
         },
         {
@@ -180,10 +180,10 @@ export const jsonScienceData = {
             images: <Image source={require('./assetsData/Science/cut/QSC18.png')}/>,
             title: "Maladie neurologique qui provoque des tremblements...",
             answer: [
-                {nom: "''Ellington''", res: false},
-                {nom: " ''Garrison''", res: false},
-                {nom: " ''Henderson''", res: false},
-                {nom: " ''Parkinson''", res: true}
+                {nom: "Ellington", res: false},
+                {nom: "Garrison", res: false},
+                {nom: "Henderson", res: false},
+                {nom: "Parkinson", res: true}
             ]
         },
         {
@@ -200,9 +200,9 @@ export const jsonScienceData = {
             images: <Image source={require('./assetsData/Science/cut/QSC20.png')}/>,
             title: "Qui constitue la classe des vertébrés ?",
             answer: [
-                {nom: "échinodermes, oiseaux, poissons.", res: false},
+                {nom: "Échinodermes, oiseaux, poissons.", res: false},
                 {nom: "Mammifères, oiseaux, reptiles, poissons.", res: true},
-                {nom: " Crustacés, insectes, mollusques, échinodermes.", res: false},
+                {nom: "Crustacés, insectes, mollusques, échinodermes.", res: false},
                 {nom: "Crustacés, insectes,oiseaux, poissons.", res: false}
             ]
         },
@@ -292,10 +292,10 @@ export const jsonScienceData = {
             images: <Image source={require('./assetsData/Science/cut/QSC29.png')}/>,
             title: "À quoi est dû l'albinisme ?",
             answer: [
-                {nom: "à un manque de Melatonine", res: false},
-                {nom: "à un manque se sérotonine", res: false},
-                {nom: "à un manque de mélanine", res: false},
-                {nom: "à un manque de Vitamine B12", res: true}
+                {nom: "À un manque de Melatonine", res: false},
+                {nom: "À un manque se sérotonine", res: false},
+                {nom: "À un manque de mélanine", res: false},
+                {nom: "À un manque de Vitamine B12", res: true}
             ]
         },
         {
@@ -373,10 +373,10 @@ export const jsonScienceData = {
             images: <Image source={require('./assetsData/Science/cut/QSC37.png')}/>,
             title: "A quoi doit-on le phénomène de marée ?",
             answer: [
-                {nom: "à l'attraction conjointe de la Lune et du Soleil", res: true},
-                {nom: "à la rotation de la Terre sur elle-même", res: false},
-                {nom: "à l'attraction de la Lune", res: false},
-                {nom: "à la volontée de Pontos le dieu de l'eau", res: false}
+                {nom: "À l'attraction conjointe de la Lune et du Soleil", res: true},
+                {nom: "À la rotation de la Terre sur elle-même", res: false},
+                {nom: "À l'attraction de la Lune", res: false},
+                {nom: "À la volontée de Pontos le dieu de l'eau", res: false}
             ]
         },
         {
@@ -413,10 +413,10 @@ export const jsonScienceData = {
             images: <Image source={require('./assetsData/Science/cut/QSC41.png')}/>,
             title: "Scott Kelly,  quel est l'odeur de l'espace ?",
             answer: [
-                {nom: "une odeur de métal brulé", res: true},
-                {nom: "une odeur de lavande", res: false},
-                {nom: "une odeur de souffre", res: false},
-                {nom: "une odeur de barbapapa", res: false}
+                {nom: "Une odeur de métal brulé", res: true},
+                {nom: "Une odeur de lavande", res: false},
+                {nom: "Une odeur de souffre", res: false},
+                {nom: "Une odeur de barbapapa", res: false}
             ]
         },
         {
@@ -436,7 +436,7 @@ export const jsonScienceData = {
                 {nom: "De l'argent", res: false},
                 {nom: "Un cocombre", res: true},
                 {nom: "Un burger", res: false},
-                {nom: "retrouver sa famille", res: false}
+                {nom: "Retrouver sa famille", res: false}
             ]
         },
 
@@ -475,10 +475,10 @@ export const jsonScienceData = {
             images: <Image source={require('./assetsData/Science/cut/QSC47.png')}/>,
             title: "De quelle couleur devient le sulfate de cuivre anhydre au contact de l'eau ?",
             answer: [
-                {nom: "vert", res: false},
-                {nom: "rose pâle", res: false},
-                {nom: "bleu", res: true},
-                {nom: "jaune", res: false}
+                {nom: "Vert", res: false},
+                {nom: "Rose pâle", res: false},
+                {nom: "Bleu", res: true},
+                {nom: "Jaune", res: false}
             ]
         },
         {
@@ -488,7 +488,7 @@ export const jsonScienceData = {
                 {nom: "Avec du papier-pH.", res: false},
                 {nom: "Avec un pH-mètre.", res: false},
                 {nom: "Avec une règle-pH", res: true},
-                {nom: "la réponse D.", res: false}
+                {nom: "La réponse D.", res: false}
             ]
         },
         {
@@ -539,7 +539,7 @@ export const jsonScienceData = {
                 {nom: " Soleil - Terre - Lune", res: false},
                 {nom: "Terre - Soleil - Lune", res: false},
                 {nom: " Soleil - Lune - Terre", res: true},
-                {nom: " lune - Terre - Soleil", res: false}
+                {nom: " Lune - Terre - Soleil", res: false}
             ]
         },
 
@@ -559,8 +559,8 @@ export const jsonScienceData = {
             title: "Quel animal n'a pas d'estomac ?",
             answer: [
                 {nom: "L'ornithorynque", res: true},
-                {nom: "l'escargot", res: false},
-                {nom: "l'échidné", res: true},
+                {nom: "L'escargot", res: false},
+                {nom: "L'échidné", res: true},
                 {nom: "Le seprent", res: false}
             ]
         },
@@ -719,9 +719,9 @@ export const jsonScienceData = {
             images: <Image source={require('./assetsData/Science/cut/QSC71.png')}/>,
             title: "La pierre ponce est une roche... ?",
             answer: [
-                {nom: "radioactive", res: false},
-                {nom: "lourde", res: false},
-                {nom: "volcanique", res: true},
+                {nom: "Radioactive", res: false},
+                {nom: "Lourde", res: false},
+                {nom: "Volcanique", res: true},
                 {nom: "Liquide", res: false}
             ]
         },
@@ -795,7 +795,7 @@ export const jsonScienceData = {
                 {nom: "Une naine brune", res: false},
                 {nom: "Une naine blanche", res: true},
                 {nom: "Une naine rouge", res: false},
-                {nom: "il explosera", res: false}
+                {nom: "Il explosera", res: false}
             ]
         },
         {
@@ -815,7 +815,7 @@ export const jsonScienceData = {
                 {nom: "Le conduit auditif", res: true},
                 {nom: "Le liquide de l'oreille", res: false},
                 {nom: "Le tympan", res: false},
-                {nom: "l'oreille interne", res: false}
+                {nom: "L'oreille interne", res: false}
             ]
         },
         {
@@ -832,7 +832,7 @@ export const jsonScienceData = {
             images: <Image source={require('./assetsData/Science/cut/QSC82.png')}/>,
             title: "Quel est l'autre nom de la colonne vertébrale ?",
             answer: [
-                {nom: " L'axis", res: false},
+                {nom: "L'axis", res: false},
                 {nom: "Le rachis", res: true},
                 {nom: "Le sternum", res: false},
                 {nom: "Le thorax ", res: false}
@@ -933,7 +933,7 @@ export const jsonScienceData = {
                 },
                 {
                     images: <Image source={require('./assetsData/Science/cut/QSC92.png')}/>,
-                    title: " En une seule journée, le sang franchit une distance de ...",
+                    title: "En une seule journée, le sang franchit une distance de ...",
                     answer: [
                         {nom: "20 km", res: false},
                         {nom: "500 km", res: false},
@@ -977,8 +977,8 @@ export const jsonScienceData = {
                     answer: [
                         {nom: "Un chien et un chat", res: false},
                         {nom: "Un coq, un mouton et un canard", res: true},
-                        {nom: "son créateur accompagner de sa femme", res: false},
-                        {nom: "son créateur accompagner de son chien", res: false}
+                        {nom: "Son créateur accompagner de sa femme", res: false},
+                        {nom: "Son créateur accompagner de son chien", res: false}
                     ]
                 },
                 {
@@ -988,7 +988,7 @@ export const jsonScienceData = {
                         {nom: "L'explosion d'un astéroïde", res: false},
                         {nom: "Une faille dans l'espace", res: false},
                         {nom: "L'explosion d'une étoile", res: true},
-                        {nom: "la déformation de l'espace par un trou de verre", res: false}
+                        {nom: "La déformation de l'espace par un trou de verre", res: false}
                     ]
                 },
                 {
