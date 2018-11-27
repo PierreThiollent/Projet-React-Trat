@@ -17,8 +17,9 @@ import {jsonScienceData} from "../Data/ScienceQuizDataFacile";
 import {jsonCGData} from "../Data/CGQuizDataFacile";
 
 
-class QuizVue extends React.Component {
+const logo = <Image source={require('../assets/Images/money.png')}/>;
 
+class QuizVue extends React.Component {
     _Next = () => {
         this._scoring();
         if (this.state.count === this.jsonDataQuestion.length - 1) {
@@ -219,11 +220,11 @@ class QuizVue extends React.Component {
                                     this.setState({enable: false})
                                 }}>
                                 <Text
-                                    style={{textAlign: 'center',}}>{"Score: " + this.state.score + " / " + this.jsonDataQuestion.length}</Text>
+                                    style={{textAlign: 'center',}}>{"Score: " + this.state.score + " / " + this.jsonDataQuestion.length}  </Text>
                             </TouchableOpacity>
                             <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>+ {this.state.xp} XP</Text>
                             {
-                                (this.props.updateQuizType.quizType === "Premium") && <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>+ {this.state.money} $$</Text>
+                                (this.props.updateQuizType.quizType === "Premium") && <Text style={{color: '#fff', fontSize: 35, marginBottom: 20}}>+ {this.state.money} {logo} </Text>
                             }
 
                         </View>
@@ -232,7 +233,7 @@ class QuizVue extends React.Component {
             </ImageBackground>
         )
     }
-};
+}
 
 const styles = StyleSheet.create({
     main_container: {

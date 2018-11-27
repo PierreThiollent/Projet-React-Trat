@@ -2,6 +2,9 @@ import React from 'react';
 import {Dimensions, Image, Modal, StyleSheet, Text, TouchableOpacity, View, ScrollView} from 'react-native';
 import connect from "react-redux/es/connect/connect";
 
+const stack = <Image style={{padding: 2}} source={require('../assets/Images/money4.png')}/>;
+const logo = <Image style={{padding: 2}} source={require('../assets/Images/money3.png')}/>;
+
 class Boutique extends React.Component {
 
     constructor(props) {
@@ -44,8 +47,9 @@ class Boutique extends React.Component {
                             color: 'white',
                             marginLeft: 15,
                             marginBottom: 50,
-                        }}>{this.props.updateCoins.coins}
-                            Points</Text>
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}>{this.props.updateCoins.coins} {stack}</Text>
                     </View>
                     <Text style={styles.title}>PROMOTIONS</Text>
                     <ScrollView style={{marginTop: 20,}}>
@@ -65,13 +69,13 @@ class Boutique extends React.Component {
                             <View style={styles.promWidth}>
                                 <Text style={{ color: 'white', textAlign: "center",}}>Ticket de transport
                                     1 voyage:
-                                    325 points</Text>
+                                    325 {logo}</Text>
                             </View>
                         </View>
                         <View style={styles.promotions}>
                             <View style={styles.promWidth}>
                                 <Text style={{ color: 'white', textAlign: "center",}}>Ticket de transport
-                                    10 voyages: 2500 points</Text>
+                                    10 voyages: 2500 {logo} </Text>
                             </View>
                             <View style={styles.promWidth}>
                                 <TouchableOpacity onPress={() => {
@@ -101,7 +105,7 @@ class Boutique extends React.Component {
 
                                 <Text style={{ color: 'white', textAlign: "center",}}>Bon d’achat de 10€
                                     Intermarché:
-                                    750 points</Text>
+                                    750 {logo}</Text>
                             </View>
                         </View>
                     </ScrollView>

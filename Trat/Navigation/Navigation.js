@@ -44,7 +44,7 @@ const AppStackNavigation = createStackNavigator(
         }
     },
     {
-        initialRouteName: 'HomeScreen',
+        initialRouteName: 'BoutiqueScreen',
         navigationOptions: {
             header: null,
             headerStyle: {
